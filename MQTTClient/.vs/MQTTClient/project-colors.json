@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d4b472cf-04e0-4deb-a445-f15627e644c4": {
+      "ProjectGuid": "d4b472cf-04e0-4deb-a445-f15627e644c4",
+      "DisplayName": "MQTTClient",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
