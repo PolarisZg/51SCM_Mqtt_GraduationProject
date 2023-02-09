@@ -85,6 +85,17 @@ typedef struct
 	const char* payload;			//有效载荷
 }MQTTPublishStruct_t;
 
+typedef struct
+{
+	const char* id;
+	const char* version;
+	const char* method;
+	struct params
+	{
+		double CurrentTemperature;
+	};
+}MQTTPayload;
+
 /* 发布确认结构体 */
 //PUBACK 报文是对 QoS 1/2 等级的 PUBLISH 报文的响应。
 typedef struct

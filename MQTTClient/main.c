@@ -148,11 +148,13 @@ int main()
 
 	/* 发布消息PUBLISH */
 	{
-		char tempPayload[] = { "202302091152" };
+		char tempPayload[] = { "202302091918" };
 		strDataPublish(tempPayload);
 	}
 	printf("Publish = %d\n", Publish());
 	Sleep(100);
+
+
 
 
 end:
@@ -176,5 +178,11 @@ int strDataPublish(char* tempPayload)
 		*Pnow++ = *tPnow++;
 	}
 	payloadSize = len;
+	return 0;
+}
+
+int payloadToBuff(MQTTPayload payload)
+{
+	memset(payloadBuff, 0, sizeof(payloadBuff));
 	return 0;
 }

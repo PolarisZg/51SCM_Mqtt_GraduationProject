@@ -3,5 +3,21 @@ D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(73,20)
 D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(100,20): warning C4013: 'MQTTPublish' undefined; assuming extern returning int
 D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(143,25): warning C4013: 'SetMQTTSendDataToServer' undefined; assuming extern returning int
 D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(152,17): warning C4013: 'strDataPublish' undefined; assuming extern returning int
-D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(170,18): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(172,18): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  mqtt.c
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(46,25): warning C4018: '<': signed/unsigned mismatch
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(153,44): warning C4244: '=': conversion from '__int64' to 'unsigned int', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(266,15): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(271,15): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(276,15): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(285,65): warning C4244: 'function': conversion from '__int64' to 'unsigned int', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(325,15): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(336,15): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(343,14): warning C4013: 'MQTTSendData' undefined; assuming extern returning int
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(388,15): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(441,15): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(449,65): warning C4244: 'function': conversion from '__int64' to 'unsigned int', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(487,65): warning C4244: 'function': conversion from '__int64' to 'unsigned int', possible loss of data
+D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\mqtt.c(522,65): warning C4244: 'function': conversion from '__int64' to 'unsigned int', possible loss of data
+  Generating Code...
   MQTTClient.vcxproj -> D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\x64\Debug\MQTTClient.exe
