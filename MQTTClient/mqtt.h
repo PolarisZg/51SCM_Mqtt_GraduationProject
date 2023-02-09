@@ -76,6 +76,7 @@ typedef struct
 /* 发布消息结构体 */
 typedef struct
 {
+	unsigned int payloadSize;
 	char RETAIN;
 	char QoS;
 	char DUP;

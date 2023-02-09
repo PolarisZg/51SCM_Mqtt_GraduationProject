@@ -413,58 +413,6 @@ char MQTTSubscribe(MQTTSubscribeStruct_t* s1, MQTTSubACKStruct_t* s2)
 	return 0;
 }
 
-/** \brief  MQTT订阅
- *
- * \param s1 指向订阅主题结构体的指针
- * \param s2 指向订阅确认结构体的指针
- * \return 返回 0 成功
- *				返回 1 连接超时，等待连接的时间已经超过最大超时等待时间(MQTT_MAX_TIMES_OUT)
- *
- */
-char MQTTSubscribe(MQTTSubscribeStruct_t* s1, MQTTSubACKStruct_t* s2)
-{
-	unsigned short temp = 0;
-
-	MQTTInit();
-	mqtt.returnData = s2;
-
-	//报文的类型
-	mqtt.messageType = MQTT_SUBSCRIBE;
-
-	/* 可变报头 */
-	//报文标识符(客户端标识符)
-	MQTTSendDataToBuff(&s1->messageID, 2, MQTT_NUM);
-
-	/* 有效载荷 */
-	//有效载荷长度
-	temp = strlen(s1->payload);
-	MQTTSendDataToBuff(&temp, 2, MQTT_NUM);
-	MQTTSendDataToBuff((void*)s1->payload, temp, MQTT_CHAR);
-
-	/* 服务质量 */
-	MQTTSendDataToBuff(&s1->QoS, 1, MQTT_NUM);
-
-	/* 编码剩余长度 */
-	codeRemainLengthAndSendMessageType();
-
-	/* 计算需要发送的数据的长度并将数据发送到服务器 */
-	MQTTSendData(mqtt.sendBuff, mqtt.sendBuffPointNow - mqtt.sendBuff);
-
-	/* 等待服务器响应 */
-	temp = 0;
-	while (mqtt.resultCode == MQTT_RESULT_CODE_INIT)
-	{
-		mqtt.MQTTDelayms(1);
-		temp++;
-		if (temp > MQTT_MAX_TIMES_OUT)
-		{
-			return 1;//超时返回
-		}
-	}
-
-	return 0;
-}
-
 
 /** \brief  MQTT取消订阅
  *
