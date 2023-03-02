@@ -1,6 +1,6 @@
 #include "mqtt.h"
 #include <windows.h>
-#include <stdio.h>
+//#include <stdio.h>
 #pragma comment (lib, "ws2_32.lib")
 
 /* 阿里云相关配置 */
@@ -148,7 +148,7 @@ int main()
 
 	/* 发布消息PUBLISH */
 	{
-		char tempPayload[] = { "202302091918" };
+		char tempPayload[] = { "qasdfghjk" };
 		strDataPublish(tempPayload);
 	}
 	printf("Publish = %d\n", Publish());
