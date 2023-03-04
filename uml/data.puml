@@ -1,0 +1,10 @@
+@startuml 
+[IAP15W4K32S4] as stc51
+[ESP8266] as esp
+[OLED128x64] as OLED 
+[传感器] as cgq
+
+stc51 - esp : uart4串行通信端口 \n AT命令
+stc51 -- OLED : GPIO \n 数字信号
+cgq -- stc51 : GPIO \n 模拟信号
+@enduml 
