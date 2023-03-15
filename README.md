@@ -118,36 +118,25 @@
 
 ### 五、参考文献
 
-[1]	<a name="section1"></a>何宾. STC单片机原理及应用[M]. 第2版. 清华大学出版社, 2019.
-[2]	<a name="section2"></a>KUO Y W,LI C L,JHANG J H,et al.Design of a wireless sensor network-based Io T platform for wide area and heterogeneous applications[J].IEEE sensors journal,2018,18(12):5187-5197.
-[3]	<a name="section3"></a>艾红,邱靖鹏.基于Zig Bee无线传输的供暖温度监测系统研究[J].现代电子技术,2018,41(23):113-117.
-[4]	<a name="section4"></a>YANG Wentao,QIAO Shushan,SONG Qiangguo,et al.The design and implementation of wireless temperature and humidity control system based on n RF905[C]//2015 IEEE10th Conference on Industrial Electronics and Applications.Auckland:IEEE,2015:753-756.
-[5]	<a name="section5"></a>肖振锋,袁荣湘,邓翔天,等.基于MSP430F169的远程智能故障监测器[J].电力自动化设备,2013,33(1):160-164.
-[6]	<a name="section6"></a>Aliyun.com. MQTT协议规范[EB/OL]. 2023-01-11. https://help.aliyun.com/document_detail/30540.html.
-[7]	<a name="section7"></a>盖荣丽,钱玉磊,李鸿彬,贾军营.基于MQTT的企业消息推送系统[J].计算机系统应用,2015,24(11):69-75.
-[8]	<a name="section8"></a>郑峰. 基于MQTT的云推送平台的研究及应用[D].杭州电子科技大学,2016.
-[9]	<a name="section9"></a>Gomes Y F, Santos D F S, Almeida H O, et al.Integrating MQTT and ISO/IEEE 11073 for health information sharing in the Internet of Things[C]//IEEE International Conference on Consumer Electronics.IEEE, 2015:200-201.
-[10] <a name="section10"></a>Díaz S E, Pérez J C, Mateos A C, et al. A novel methodology for the monitoring of the agricultural production process based on wireless sensor networks[J]. Computers and electronics in agriculture, 2011, 76(2): 252-265.
-[11] <a name="section11"></a>孙晓梅. 智慧农业传感器的应用现状及展望[J]. 农业网络信息, 2015 (2): 39-41.
-[12] <a name="section12"></a>张仲明,郭东伟,吕巍,张立明.基于DS18B20温度传感器的温度测量系统设计[J].实验技术与管理,2018,35(05):76-79+88.
-[13] <a name="section13"></a>朱顺兰, 王雪萍. 光照强度传感器及其变送电路设计与实现[J]. 中国电子商务, 2009 (12): 93-93.
-[14] <a name="section14"></a>Piromalis D D, Arvanitis K G, Sigrimis N. DASH7 mode 2: A promising perspective for wireless agriculture[J]. IFAC Proceedings Volumes, 2013, 46(18): 127-132.
-[15] <a name="section15"></a>Wang Y, Qi C, Pan H. Design of remote monitoring system for aquaculture cages based on 3G networks and ARM-Android embedded system[J]. Procedia Engineering, 2012, 29: 79-83.
-[16] <a name="section16"></a>梁志勋,施运应,覃有燎,王之兴.基于MQTT协议的智慧农业大棚测控系统研究[J].北方园艺,2020,(23):161-171.
-[17] <a name="section17"></a>郭美荣, 李瑾, 秦向阳. 农业信息服务云平台架构初探[J]. 农业网络信息, 2012 (2): 13-16.
-[18] <a name="section18"></a>姚丹,谢雪松,杨建军,Han Fei,Wang Shuai.基于MQTT协议的物联网通信系统的研究与实现[J].信息通信,2016(03):33-35.
-[19] <a name="section19"></a>王海燕,杨艳华.Proteus和Keil软件在单片机实验教学中的应用[J].实验室研究与探索,2012,31(05):88-91.
-[20] <a name="section20"></a>(美)StephenPrata著; 张海龙,袁国忠译.C Primer Plus(第六版)中文版[M] 北京：人民邮电出版社.2020[12]  谢希仁.计算机网络[M].8版.北京:电子工业出版社,2021.
+[1]	<a name="section1"></a>何宾. STC单片机原理及应用[M]. 第2版. 清华大学出版社, 2019.<br>
+[2]	<a name="section2"></a>KUO Y W,LI C L,JHANG J H,et al.Design of a wireless sensor network-based Io T platform for wide area and heterogeneous applications[J].IEEE sensors journal,2018,18(12):5187-5197.<br>
+[3]	<a name="section3"></a>艾红,邱靖鹏.基于Zig Bee无线传输的供暖温度监测系统研究[J].现代电子技术,2018,41(23):113-117.<br>
+[4]	<a name="section4"></a>YANG Wentao,QIAO Shushan,SONG Qiangguo,et al.The design and implementation of wireless temperature and humidity control system based on n RF905[C]//2015 IEEE10th Conference on Industrial Electronics and Applications.Auckland:IEEE,2015:753-756.<br>
+[5]	<a name="section5"></a>肖振锋,袁荣湘,邓翔天,等.基于MSP430F169的远程智能故障监测器[J].电力自动化设备,2013,33(1):160-164.<br>
+[6]	<a name="section6"></a>Aliyun.com. MQTT协议规范[EB/OL]. 2023-01-11. https://help.aliyun.com/document_detail/30540.html.<br>
+[7]	<a name="section7"></a>盖荣丽,钱玉磊,李鸿彬,贾军营.基于MQTT的企业消息推送系统[J].计算机系统应用,2015,24(11):69-75.<br>
+[8]	<a name="section8"></a>郑峰. 基于MQTT的云推送平台的研究及应用[D].杭州电子科技大学,2016.<br>
+[9]	<a name="section9"></a>Gomes Y F, Santos D F S, Almeida H O, et al.Integrating MQTT and ISO/IEEE 11073 for health information sharing in the Internet of Things[C]//IEEE International Conference on Consumer Electronics.IEEE, 2015:200-201.<br>
+[10] <a name="section10"></a>Díaz S E, Pérez J C, Mateos A C, et al. A novel methodology for the monitoring of the agricultural production process based on wireless sensor networks[J]. Computers and electronics in agriculture, 2011, 76(2): 252-265.<br>
+[11] <a name="section11"></a>孙晓梅. 智慧农业传感器的应用现状及展望[J]. 农业网络信息, 2015 (2): 39-41.<br>
+[12] <a name="section12"></a>张仲明,郭东伟,吕巍,张立明.基于DS18B20温度传感器的温度测量系统设计[J].实验技术与管理,2018,35(05):76-79+88.<br>
+[13] <a name="section13"></a>朱顺兰, 王雪萍. 光照强度传感器及其变送电路设计与实现[J]. 中国电子商务, 2009 (12): 93-93.<br>
+[14] <a name="section14"></a>Piromalis D D, Arvanitis K G, Sigrimis N. DASH7 mode 2: A promising perspective for wireless agriculture[J]. IFAC Proceedings Volumes, 2013, 46(18): 127-132.<br>
+[15] <a name="section15"></a>Wang Y, Qi C, Pan H. Design of remote monitoring system for aquaculture cages based on 3G networks and ARM-Android embedded system[J]. Procedia Engineering, 2012, 29: 79-83.<br>
+[16] <a name="section16"></a>梁志勋,施运应,覃有燎,王之兴.基于MQTT协议的智慧农业大棚测控系统研究[J].北方园艺,2020,(23):161-171.<br>
+[17] <a name="section17"></a>郭美荣, 李瑾, 秦向阳. 农业信息服务云平台架构初探[J]. 农业网络信息, 2012 (2): 13-16.<br>
+[18] <a name="section18"></a>姚丹,谢雪松,杨建军,Han Fei,Wang Shuai.基于MQTT协议的物联网通信系统的研究与实现[J].信息通信,2016(03):33-35.<br>
+[19] <a name="section19"></a>王海燕,杨艳华.Proteus和Keil软件在单片机实验教学中的应用[J].实验室研究与探索,2012,31(05):88-91.<br>
+[20] <a name="section20"></a>(美)StephenPrata著; 张海龙,袁国忠译.C Primer Plus(第六版)中文版[M] 北京：人民邮电出版社.2020[12]  谢希仁.计算机网络[M].8版.北京:电子工业出版社,2021.<br>
 
 六、指导教师意见
-
-
-
-
-
-
-
-
-指导教师签名：
-
-                                                      年    月    日  
