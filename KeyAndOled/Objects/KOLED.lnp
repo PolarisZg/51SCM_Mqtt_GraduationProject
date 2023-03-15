@@ -1,0 +1,9 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\delay.obj",
+".\Objects\GPIO.obj",
+".\Objects\Uart1.obj",
+".\Objects\myKey.obj",
+".\Objects\OLED.obj" 
+TO ".\Objects\KOLED" 
+PRINT(".\Listings\KOLED.m51") RAMSIZE(256) 
