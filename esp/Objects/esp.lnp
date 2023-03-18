@@ -2,8 +2,9 @@
 ".\Objects\main.obj",
 ".\Objects\delay.obj",
 ".\Objects\GPIO.obj",
+".\Objects\GYRO.obj",
 ".\Objects\myKey.obj",
 ".\Objects\OLED.obj",
 ".\Objects\uart.obj" 
-TO ".\Objects\KOLED" 
-PRINT(".\Listings\KOLED.m51") RAMSIZE(256) 
+TO ".\Objects\esp" 
+PRINT(".\Listings\esp.m51") RAMSIZE(256) 

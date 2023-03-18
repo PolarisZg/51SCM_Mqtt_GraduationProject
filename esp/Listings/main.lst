@@ -1,0 +1,167 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              03/18/2023 18:27:18 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c LARGE OPTIMIZE(8,SPEED) BROWSE INCDIR(.\include) DEBUG OBJECTEXTE
+                    -ND PRINT(.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include  "config.h"
+   2          #include "stdio.h"
+   3          #include  "GPIO.h"
+   4          #include  "delay.h"
+   5          //#include "uart1.h"
+   6          #include "string.h"
+   7          #include "myKey.h"
+   8          #include "oled.h"
+   9          //#include "uart_4.h"
+  10          #include "uart.h"
+  11          
+  12          unsigned char wifi_send_buf[] = "#######";
+  13          unsigned char ctrlZ = 0x1a;
+  14          
+  15          void delay_10s()
+  16          {
+  17   1        delay_ms(1000); //延时
+  18   1        delay_ms(1000);
+  19   1        delay_ms(1000);
+  20   1        delay_ms(1000);
+  21   1        delay_ms(1000);
+  22   1        delay_ms(1000);
+  23   1        delay_ms(1000);
+  24   1        delay_ms(1000);
+  25   1        delay_ms(1000);
+  26   1        delay_ms(1000);
+  27   1        delay_ms(1000);
+  28   1      }
+  29          
+  30          void main()
+  31          {
+  32   1        unsigned char d, tempd;
+  33   1        unsigned int i;
+  34   1        unsigned int offset = 0;
+  35   1        char str[] = "hello\r\n";
+  36   1        i = 0;
+  37   1        d = tempd = 0x00;
+  38   1        
+  39   1        myKeyInit();
+  40   1        Uart1Init();
+  41   1        
+  42   1        printf("go go go \r\n");
+  43   1        
+  44   1        OLED_Init();      //初始化OLED
+  45   1        OLED_Clear();
+  46   1        OLED_ShowString(0,0,"now push",12);
+  47   1        printf("oled end \r\n");
+  48   1        
+  49   1        /* 初始化esp8266 */
+  50   1        Uart4Init();
+  51   1        printf("u4 init end\r\n");
+  52   1        Uart4SendString("AT+CWJAP=\"WF406\",\"406406ncepu\"\r\n");
+  53   1        printf("AT+CWJAP=\"Mi 11\",\"qqqqqqqq\"\r\n");
+  54   1        delay_10s();
+C51 COMPILER V9.57.0.0   MAIN                                                              03/18/2023 18:27:18 PAGE 2   
+
+  55   1        printf("race:\r\n");//串口1发送信息
+  56   1        Uart1SendData(uart4_race_buf,uart4_race_count);
+  57   1        delay_ms(1000);//延时1秒
+  58   1        
+  59   1        uart4_race_count = 0;//串口4接收计数清零
+  60   1        Uart4SendString("AT+CWMODE=1\r\n");
+  61   1        printf("AT+CWMODE=1\r\n");
+  62   1        delay_10s();
+  63   1        printf("race:\r\n");//串口1发送信息
+  64   1        Uart1SendData(uart4_race_buf,uart4_race_count);//将串口4收到的数据通过串口1发送给电脑
+  65   1        delay_ms(2000);
+  66   1        
+  67   1        uart4_race_count = 0;//串口4接收计数清零
+  68   1        Uart4SendString("AT+CIPMUX=0\r\n");//串口4发送AT命令给WIFI模块
+  69   1        printf("AT+CIPMUX=0\r\n");
+  70   1        delay_10s();//
+  71   1        printf("race:\r\n");//串口1发送信息
+  72   1        Uart1SendData(uart4_race_buf,uart4_race_count);//将串口4收到的数据通过串口1发送给电脑
+  73   1        delay_ms(2000);
+  74   1        
+  75   1        uart4_race_count = 0;//串口4接收计数清零
+  76   1        Uart4SendString("send:\r\nAT+CIPSTART=\"TCP\",\"192.168.1.107\",12345\r\n");
+  77   1        printf("send:\r\nAT+CIPSTART=\"TCP\",\"192.168.1.107\",12345\r\n");
+  78   1        delay_10s();//
+  79   1        printf("race:\r\n");//串口1发送信息
+  80   1        Uart1SendData(uart4_race_buf,uart4_race_count);//将串口4收到的数据通过串口1发送给电脑
+  81   1        delay_ms(2000);//
+  82   1        
+  83   1        printf("esp init end \r\n");
+  84   1        
+  85   1        while(1)
+  86   1        {
+  87   2          delay_ms(100);
+  88   2          tempd = getMyKeyData();
+  89   2          if(tempd != d)
+  90   2          {
+  91   3            d = tempd;
+  92   3            
+  93   3            printf("now push : ");
+  94   3            
+  95   3            for(i = 0 ; i < 7 ; i++)
+  96   3            {
+  97   4              if((tempd >> i) & 0x01 == 0x01)
+  98   4              {
+  99   5                printf("%d",i);
+ 100   5                wifi_send_buf[i] = '0' + i;
+ 101   5                OLED_ShowChar(i*8,4,'0'+i,12);
+ 102   5              }
+ 103   4              else
+ 104   4              {
+ 105   5                wifi_send_buf[i] = '#';
+ 106   5                OLED_ShowChar(i*8,4,' ',12);
+ 107   5              }
+ 108   4            }
+ 109   3            printf("\r\nwifisendbuff is %s",wifi_send_buf);
+ 110   3            printf("\r\n");
+ 111   3        
+ 112   3            uart4_race_count = 0;//串口4接收计数清零
+ 113   3            Uart4SendString("send:\r\nAT+CIPSEND=7\r\n");//
+ 114   3            while(1){
+ 115   4              if(uart4_race_count - 2 >= 0 && uart4_race_buf[uart4_race_count - 2] == '>')
+ 116   4                break;
+C51 COMPILER V9.57.0.0   MAIN                                                              03/18/2023 18:27:18 PAGE 3   
+
+ 117   4            }
+ 118   3      
+ 119   3            // printf("send:\r\nAT+CIPSEND=7\r\n");
+ 120   3            // delay_10s();//
+ 121   3            printf("\r\n------race:\r\n");//
+ 122   3            Uart1SendData(uart4_race_buf,uart4_race_count);//将串口4收到的数据通过串口1发送给电脑
+ 123   3            // while(uart4_race_count > 0)
+ 124   3            // {
+ 125   3            //  printf("\r\n%d : %c \r\n",uart4_race_count,uart4_race_buf[uart4_race_count]);
+ 126   3            //  uart4_race_count--;
+ 127   3            // }
+ 128   3      
+ 129   3            uart4_race_count = 0;//串口4接收计数清零
+ 130   3            Uart4SendString(wifi_send_buf);//串口4发送需要发送的数据   数据在wifi_send_buf 数组中 
+             -  数组的定义在最上面
+ 131   3            delay_ms(1000);//
+ 132   3      
+ 133   3            Uart4SendString("+++");
+ 134   3            delay_ms(2000);
+ 135   3          }
+ 136   2        }
+ 137   1      }
+*** WARNING C316 IN LINE 137 OF main.c: unterminated conditionals
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    733    ----
+   CONSTANT SIZE    =    300    ----
+   XDATA SIZE       =      9      14
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

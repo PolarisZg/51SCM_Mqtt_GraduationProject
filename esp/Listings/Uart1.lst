@@ -1,0 +1,141 @@
+C51 COMPILER V9.57.0.0   UART1                                                             03/17/2023 00:00:55 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE UART1
+OBJECT MODULE PLACED IN .\Objects\Uart1.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE include\Uart1.c LARGE OPTIMIZE(8,SPEED) BROWSE INCDIR(.\include) DEBUG O
+                    -BJECTEXTEND PRINT(.\Listings\Uart1.lst) TABS(2) OBJECT(.\Objects\Uart1.obj)
+
+line level    source
+
+   1          #include "uart1.h"
+   2          #include "stdio.h"
+   3          
+   4          typedef unsigned char BYTE;
+   5          
+   6          #define BAUD 115200UL //串口波特率
+   7          
+   8          #define S1_S0 0x40 //P_SW1.6
+   9          #define S1_S1 0x80 //P_SW1.7
+  10          
+  11          #define STI 0x02 //S4CON.1
+  12          
+  13          bit busy;
+  14          
+  15          unsigned char uart1_buf[128] = {0};
+  16          unsigned char UART1_LEN = 0, UART1_STA = 0;
+  17          
+  18          void Uart1_Init(void)
+  19          {
+  20   1        ACC = P_SW1;
+  21   1        ACC &= ~(S1_S0 | S1_S1); //S1_S0=0 S1_S1=0(P3.0/RxD, P3.1/TxD)
+  22   1        P_SW1 = ACC;
+  23   1        SCON = (SCON & 0x3f) | 0x40; //8位可变波特率
+  24   1      
+  25   1        T2L = (65536 - (MAIN_Fosc / 4 / BAUD)); //设置波特率重装值
+  26   1        T2H = (65536 - (MAIN_Fosc / 4 / BAUD)) >> 8;
+  27   1      
+  28   1        AUXR = 0x14;  //T2为1T模式, 并启动定时器2
+  29   1        AUXR |= 0x01; //选择定时器2为串口1的波特率发生器
+  30   1        PS = 1;     //高优先级中断
+  31   1      
+  32   1        ES = 1;  //使能串口1中断
+  33   1             // TI = 1;         //S4TI位
+  34   1        REN = 1; //允许接收
+  35   1        EA = 1;  //允许全局中断
+  36   1      }
+  37          
+  38          void Uart1() interrupt 4 using 1
+  39          {
+  40   1        unsigned char Res;
+  41   1      
+  42   1        if (RI)
+  43   1        {
+  44   2          RI = 0;
+  45   2      
+  46   2          Res = SBUF;
+  47   2          if (UART1_LEN < 128)
+  48   2          {
+  49   3            uart1_buf[UART1_LEN++] = Res;
+  50   3          }
+  51   2      
+  52   2          if (Res == '\r') //按下回车键
+  53   2          {
+  54   3            UART1_STA = 1;
+C51 COMPILER V9.57.0.0   UART1                                                             03/17/2023 00:00:55 PAGE 2   
+
+  55   3            UART1_LEN = 0;
+  56   3          }
+  57   2        }
+  58   1        if (TI)
+  59   1        {
+  60   2          TI = 0;
+  61   2          busy = 0;
+  62   2        }
+  63   1      }
+  64          
+  65          /*----------------------------
+  66          发送串口数据
+  67          // ----------------------------*/
+  68          
+  69          void SendData(BYTE dat)
+  70          {
+  71   1        while (busy)
+  72   1          ; //等待前面的数据发送完成
+  73   1        busy = 1;
+  74   1        SBUF = dat; //写数据到UART1数据寄存器
+  75   1      }
+  76          
+  77          /*----------------------------
+  78          发送字符串
+  79          ----------------------------*/
+  80          void Uart1SendData(char *s, unsigned short len)
+  81          {
+  82   1        while (len) //检测字符串结束标志
+  83   1        {
+  84   2          SendData(*s++); //发送当前字符
+  85   2          len--;
+  86   2        }
+  87   1      }
+  88          
+  89          char putchar(char c)
+  90          {
+  91   1        ES = 0; //使能串口中断
+  92   1      
+  93   1        SBUF = c;
+  94   1      
+  95   1        while (!TI)
+  96   1          ;
+  97   1        TI = 0; //清除TI位
+  98   1      
+  99   1        ES = 1; //使能串口中断
+ 100   1      
+ 101   1        return c;
+ 102   1      }
+ 103          
+ 104          /*----------------------------
+ 105          发送字符串
+ 106          ----------------------------*/
+ 107          void SendString(char *s)
+ 108          {
+ 109   1        while (*s) //检测字符串结束标志
+ 110   1        {
+ 111   2          SendData(*s++); //发送当前字符
+ 112   2        }
+ 113   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.57.0.0   UART1                                                             03/17/2023 00:00:55 PAGE 3   
+
+   CODE SIZE        =    211    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    130       6
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

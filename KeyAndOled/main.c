@@ -2,10 +2,10 @@
 #include "stdio.h"
 #include	"GPIO.h"
 #include	"delay.h"
-#include "uart1.h"
 #include "string.h"
 #include "myKey.h"
 #include "oled.h"
+#include "uart.h"
 
 void main()
 {
@@ -24,11 +24,13 @@ void main()
 	OLED_Init();			//初始化OLED
 	OLED_Clear();
 	OLED_ShowString(0,0,"now push",12);
+	printf("oledend\r\n");
 	
 	while(1)
 	{
 		delay_ms(100);
 		tempd = getMyKeyData();
+		printf("getkeyend\r\n");
 		if(tempd != d)
 		{
 			d = tempd;

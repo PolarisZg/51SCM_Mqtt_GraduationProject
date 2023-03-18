@@ -52,15 +52,142 @@
     GPIO_Inilize(GPIO_P4, &GPIO_InitStructure);	//初始化
 ```
 
+## 利用esp8266连接
+
+## tips
+
+1. 需要使用uart1数据串口与电脑通信，需要使用uart4数据串口与esp8266通信
+
+2. 因此，需要初始化两个数据串口，注意初始化两个串口时需要两个计时器，而官方给的include文件中对uart1端口初始化与uart4端口初始化的函数中，使用了同一个计数器<br>官方include文件如下<br>
+
+```
+void Uart1_Init(void)
+{
+	ACC = P_SW1;
+	ACC &= ~(S1_S0 | S1_S1); //S1_S0=0 S1_S1=0(P3.0/RxD, P3.1/TxD)
+	P_SW1 = ACC;
+	SCON = (SCON & 0x3f) | 0x40; //8位可变波特率
+
+	T2L = (65536 - (MAIN_Fosc / 4 / BAUD)); //设置波特率重装值
+	T2H = (65536 - (MAIN_Fosc / 4 / BAUD)) >> 8;
+
+	AUXR = 0x14;  //T2为1T模式, 并启动定时器2
+	AUXR |= 0x01; //选择定时器2为串口1的波特率发生器
+	PS = 1;		  //高优先级中断
+
+	ES = 1;	 //使能串口1中断
+			 //	TI = 1;         //S4TI位
+	REN = 1; //允许接收
+	EA = 1;	 //允许全局中断
+}
+```
+
+```
+void Uart4_Init(void)
+{
+	P_SW2 |= S4_S0;             //S4_S0=1 (P5.2/RxD4_2, P5.3/TxD4_2)
+
+	S4CON = 0x10;               //8位可变波特率
+
+	T2L = (65536 - (MAIN_Fosc/4/BAUD));   //设置波特率重装值
+	T2H = (65536 - (MAIN_Fosc/4/BAUD))>>8;
+
+	AUXR = 0x14;                //T2为1T模式, 并启动定时器2
+	PS = 0;	//高优先级中断
+	
+	IE2 = 0x10;                 //使能串口4中断
+}
+```
+
+可以看到，两个串口都使用了T2计时器，因此若使用官方include文件进行初始化，会导致其中一个串口不可用<br>这样，我们可以自己写一个串口初始化函数，调用其他的计时器对串口初始化<br>修改后的uart4串口初始化函数如下
+
+```
+void Uart4Init(void)
+{
+    P_SW2 |= S4_S0;             //S4_S0=1 (P5.2/RxD4_2, P5.3/TxD4_2)
+    S4CON = 0x50;               //8位可变波特率
+
+    T4L = (65536 - (MAIN_Fosc/4/BAUD));   //设置波特率重装值
+    T4H = (65536 - (MAIN_Fosc/4/BAUD))>>8;
+    T4T3M |= 0x20;              //定时器4为1T模式
+    T4T3M |= 0x80;              //定时器4开始计时
+
+    IE2 = 0x10;                 //使能串口4中断
+    EA = 1;
+}
+```
+
+3. 函数命名啊，简直太混乱了，驼峰命名和下划线混着来，uart4和uart1俩传输数据都混在一起，留到以后再改吧
+
+4. 变量的声明与变量的定义不同，变量声明可以再 .h 文件中，变量的定义可以在 .c 文件中，同名变量仅能定义一次
+
+5. 需要长时间的delay_ms，esp8266的返回信息很耗时间。当然，长时间的delay容易影响采集数据的精准度，因此有时需要根据返回值去判断是否进行为非delay<br>~~不过delay_ms它无脑啊~~<br>一个长达10s的延迟，可以让连接的wifi更加稳定
+
+```
+void delay_10s()
+{
+	delay_ms(1000);	//延时
+	delay_ms(1000);
+	delay_ms(1000);
+	delay_ms(1000);
+	delay_ms(1000);
+	delay_ms(1000);
+	delay_ms(1000);
+	delay_ms(1000);
+	delay_ms(1000);
+	delay_ms(1000);
+	delay_ms(1000);
+}
+
+/* 初始化esp8266 */
+	Uart4Init();
+	printf("u4 init end\r\n");
+	Uart4SendString("AT+CWJAP=\"WF406\",\"406406ncepu\"\r\n");
+	printf("AT+CWJAP=\"WF406\",\"406406ncepu\"\r\n");
+	delay_10s();
+	printf("race:\r\n");//串口1发送信息
+	Uart1SendData(uart4_race_buf,uart4_race_count);
+	delay_ms(1000);//延时1秒
+```
+
+发送数据时，不好控制延时，所以就根据返回值去判断是否允许发送数据
+
+```
+uart4_race_count = 0;//串口4接收计数清零
+Uart4SendString("send:\r\nAT+CIPSEND=7\r\n");//
+while(1){
+	if(uart4_race_count - 2 >= 0 && uart4_race_buf[uart4_race_count - 2] == '>')
+		break;
+}
+
+printf("\r\n------race:\r\n");//
+Uart1SendData(uart4_race_buf,uart4_race_count);//将串口4收到的数据通过串口1发送给电脑
+
+uart4_race_count = 0;//串口4接收计数清零
+Uart4SendString(wifi_send_buf);//串口4发送需要发送的数据   数据在wifi_send_buf 数组中   数组的定义在最上面
+delay_ms(1000);//
+```
+
+6. `AT+CIPSEND`指令需要使用`+++`指令中止，在`+++`之后或之前需要至少20ms的延时(所以咱就用1000ms就好了)
+
+```
+Uart4SendString("+++");
+delay_ms(2000);
+```
+
+7. `AT+CIPSEND`需要指定所传输数据的长度，这个长度值要整合在字符串中，估计是一个一位至三位的数字，之后再写这个部分吧
+
+8. 还是要吐槽一下那个混乱的函数命名
+
 ## 华北电力大学毕业设计(论 文) 开题报告
 
 |题目|基于单片机的远程数据采集系统|
 |---|---|
-|学生姓名|祁百川|
-|学号|120191080308|
-|所在院系|控制与计算机工程学院
-|专业班级|计算1901
-|指导教师|闫江毓|
+|学生姓名|xxx|
+|学号|120191xxxxxx|
+|所在院系|控制与计算机工程学院|
+|专业班级|计算xxxx|
+|指导教师|xxx|
 
 2023年3月8日
 

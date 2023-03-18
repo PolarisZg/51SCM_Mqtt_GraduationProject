@@ -46,7 +46,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>KOLED</OutputName>
+          <OutputName>esp</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -383,6 +383,11 @@
               <FileName>GPIO.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\include\GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>GYRO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\include\GYRO.c</FilePath>
             </File>
             <File>
               <FileName>myKey.c</FileName>
