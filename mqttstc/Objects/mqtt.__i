@@ -1,0 +1,1 @@
+"include\mqtt.c" LARGE OPTIMIZE (8,SPEED) BROWSE INCDIR(.\include) DEBUG OBJECTEXTEND PRINT(.\Listings\mqtt.lst) TABS (2) OBJECT(.\Objects\mqtt.obj)

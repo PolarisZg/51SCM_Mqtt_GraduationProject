@@ -1,0 +1,10 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\delay.obj",
+".\Objects\esp.obj",
+".\Objects\GPIO.obj",
+".\Objects\myKey.obj",
+".\Objects\OLED.obj",
+".\Objects\uart.obj" 
+TO ".\Objects\mqttstc" 
+PRINT(".\Listings\mqttstc.m51") RAMSIZE(256) 

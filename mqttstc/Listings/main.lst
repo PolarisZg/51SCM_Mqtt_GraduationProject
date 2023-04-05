@@ -1,0 +1,96 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              03/29/2023 22:37:43 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c LARGE OPTIMIZE(8,SPEED) BROWSE INCDIR(.\include) DEBUG OBJECTEXTE
+                    -ND PRINT(.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include  "config.h"
+   2          #include "stdio.h"
+   3          #include  "GPIO.h"
+   4          #include  "delay.h"
+   5          #include "string.h"
+   6          #include "myKey.h"
+   7          #include "oled.h"
+   8          #include "uart.h"
+   9          #include "esp.h"
+  10          
+  11          char wifi_send_buf[] = "#######";
+  12          
+  13          void main()
+  14          {
+  15   1        unsigned int i;
+  16   1        i = 0;
+  17   1        
+  18   1        WDT_CONTR = 0x17;
+  19   1        myKeyInit();
+  20   1        WDT_CONTR = 0x17;
+  21   1        Uart1Init();
+  22   1        WDT_CONTR = 0x17;
+  23   1        
+  24   1        uart1SendString("go go go \r\n");
+  25   1        
+  26   1        OLED_Init();      //初始化OLED
+  27   1        WDT_CONTR = 0x17;
+  28   1        OLED_Clear();
+  29   1        OLED_ShowString(0,0,"now push",12);
+  30   1        uart1SendString("oled end \r\n");
+  31   1        WDT_CONTR = 0x17;
+  32   1        
+  33   1        /* 初始化esp8266 */
+  34   1        espInit("Mi 11","qqqqqqqq","47.91.8.141","1883");
+  35   1        WDT_CONTR = 0x17;
+  36   1      
+  37   1        uart1SendString("\r\n now i am delay 10 second \r\n");
+  38   1        //delay_10s();
+  39   1        
+  40   1        /* 连接CONNECT */
+  41   1        MQTTConnect();
+  42   1        delay_ms(1000);
+  43   1        WDT_CONTR = 0X37;
+  44   1        
+  45   1        while(1)
+  46   1        {
+  47   2          delay_ms(1000);
+  48   2          getMyKeyData(wifi_send_buf);
+  49   2      
+  50   2          printf("now push : ");
+  51   2            
+  52   2          for(i = 0 ; i < 7 ; i++)
+  53   2          {
+  54   3            if(wifi_send_buf[i] == '#')
+C51 COMPILER V9.57.0.0   MAIN                                                              03/29/2023 22:37:43 PAGE 2   
+
+  55   3            {
+  56   4              OLED_ShowChar(i*8,4,'0' + i,12);
+  57   4            }
+  58   3            else
+  59   3            {
+  60   4              OLED_ShowChar(i*8,4,' ',12);
+  61   4            }
+  62   3          }
+  63   2          printf("\r\nwifisendbuff is %s",wifi_send_buf);
+  64   2          printf("\r\n");
+  65   2          MQTTPublish(wifi_send_buf);
+  66   2          WDT_CONTR = 0X37; //喂狗操作 
+  67   2          delay_ms(1000);
+  68   2        }
+  69   1      }
+*** WARNING C316 IN LINE 69 OF main.c: unterminated conditionals
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    311    ----
+   CONSTANT SIZE    =    132    ----
+   XDATA SIZE       =      8       2
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

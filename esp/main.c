@@ -49,7 +49,7 @@ void main()
 	/* 初始化esp8266 */
 	Uart4Init();
 	printf("u4 init end\r\n");
-	Uart4SendString("AT+CWJAP=\"WF406\",\"406406ncepu\"\r\n");
+	Uart4SendString("AT+CWJAP=\"Mi 11\",\"qqqqqqqq\"\r\n");
 	printf("AT+CWJAP=\"Mi 11\",\"qqqqqqqq\"\r\n");
 	delay_10s();
 	printf("race:\r\n");//串口1发送信息
@@ -73,7 +73,7 @@ void main()
 	delay_ms(2000);
 	
 	uart4_race_count = 0;//串口4接收计数清零
-	Uart4SendString("send:\r\nAT+CIPSTART=\"TCP\",\"192.168.1.107\",12345\r\n");
+	Uart4SendString("send:\r\nAT+CIPSTART=\"TCP\",\"192.168.193.226\",12345\r\n");
 	printf("send:\r\nAT+CIPSTART=\"TCP\",\"192.168.1.107\",12345\r\n");
 	delay_10s();//
 	printf("race:\r\n");//串口1发送信息

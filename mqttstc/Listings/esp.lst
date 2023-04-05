@@ -1,0 +1,347 @@
+C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE ESP
+OBJECT MODULE PLACED IN .\Objects\esp.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE include\esp.c LARGE OPTIMIZE(8,SPEED) BROWSE INCDIR(.\include) DEBUG OBJ
+                    -ECTEXTEND PRINT(.\Listings\esp.lst) TABS(2) OBJECT(.\Objects\esp.obj)
+
+line level    source
+
+   1          #include "esp.h"
+   2          
+   3          /*----------uart4 部分----------*/
+   4          #define BAUD 115200UL             //串口波特率
+   5          #define S4_S0 0x04              //P_SW2.2
+   6          #define S4RI  0x01              //S4CON.0
+   7          #define S4TI  0x02              //S4CON.1
+   8          #define S4RB8 0x04              //S4CON.2
+   9          #define S4TB8 0x08              //S4CON.3
+  10          
+  11          bit uart4_busy;
+  12          unsigned char esp_race_buf[100] = {0};
+  13          unsigned int esp_race_count = 0;
+  14          char MQTTConnectData[] = {0x10 ,0xBC ,0x01 ,0x00 ,0x04 ,0x4D ,0x51 ,0x54 ,0x54 ,0x04 ,0xC2 ,0x01 ,0x2C ,0x
+             -00 ,0x54 ,0x61 ,0x36 ,0x32 ,0x78 ,0x70 ,0x64 ,0x69 ,0x50 ,0x6D ,0x57 ,0x64 ,0x2E ,0x35 ,0x31 ,0x53 ,0x65 ,0x63 ,0x6F ,0x
+             -6E ,0x64 ,0x54 ,0x65 ,0x73 ,0x74 ,0x7C ,0x73 ,0x65 ,0x63 ,0x75 ,0x72 ,0x65 ,0x6D ,0x6F ,0x64 ,0x65 ,0x3D ,0x32 ,0x2C ,0x
+             -73 ,0x69 ,0x67 ,0x6E ,0x6D ,0x65 ,0x74 ,0x68 ,0x6F ,0x64 ,0x3D ,0x68 ,0x6D ,0x61 ,0x63 ,0x73 ,0x68 ,0x61 ,0x32 ,0x35 ,0x
+             -36 ,0x2C ,0x74 ,0x69 ,0x6D ,0x65 ,0x73 ,0x74 ,0x61 ,0x6D ,0x70 ,0x3D ,0x31 ,0x36 ,0x37 ,0x34 ,0x36 ,0x30 ,0x38 ,0x34 ,0x
+             -30 ,0x35 ,0x30 ,0x32 ,0x37 ,0x7C ,0x00 ,0x18 ,0x35 ,0x31 ,0x53 ,0x65 ,0x63 ,0x6F ,0x6E ,0x64 ,0x54 ,0x65 ,0x73 ,0x74 ,0x
+             -26 ,0x61 ,0x36 ,0x32 ,0x78 ,0x70 ,0x64 ,0x69 ,0x50 ,0x6D ,0x57 ,0x64 ,0x00 ,0x40 ,0x61 ,0x37 ,0x64 ,0x32 ,0x35 ,0x61 ,0x
+             -30 ,0x61 ,0x31 ,0x63 ,0x36 ,0x66 ,0x30 ,0x65 ,0x33 ,0x39 ,0x61 ,0x39 ,0x35 ,0x32 ,0x66 ,0x35 ,0x36 ,0x64 ,0x32 ,0x35 ,0x
+             -34 ,0x38 ,0x61 ,0x63 ,0x36 ,0x31 ,0x39 ,0x31 ,0x66 ,0x62 ,0x39 ,0x62 ,0x38 ,0x30 ,0x36 ,0x34 ,0x35 ,0x30 ,0x39 ,0x37 ,0x
+             -35 ,0x64 ,0x37 ,0x63 ,0x31 ,0x35 ,0x31 ,0x37 ,0x33 ,0x38 ,0x36 ,0x63 ,0x35 ,0x64 ,0x36 ,0x64 ,0x39 ,0x36};
+  15          char MQTTPublishData[] = {0x30 ,0x2E ,0x00 ,0x25 ,0x2F ,0x61 ,0x36 ,0x32 ,0x78 ,0x70 ,0x64 ,0x69 ,0x50 ,0x
+             -6D ,0x57 ,0x64 ,0x2F ,0x35 ,0x31 ,0x53 ,0x65 ,0x63 ,0x6F ,0x6E ,0x64 ,0x54 ,0x65 ,0x73 ,0x74 ,0x2F ,0x75 ,0x73 ,0x65 ,0x
+             -72 ,0x2F ,0x75 ,0x70 ,0x64 ,0x61 ,0x74 ,0x65 ,0x23 ,0x23 ,0x23 ,0x23 ,0x23 ,0x23 ,0x23};
+  16          char MQTTPingData[] = {0xC0 ,0x00};
+  17          char MQTTDisconnectData[] = {0xE0 ,0x00};
+  18          
+  19          void Uart4Init(void)
+  20          {
+  21   1          P_SW2 |= S4_S0;             //S4_S0=1 (P5.2/RxD4_2, P5.3/TxD4_2)
+  22   1          S4CON = 0x50;               //8位可变波特率
+  23   1      
+  24   1          T4L = (65536 - (MAIN_Fosc/4/BAUD));   //设置波特率重装值
+  25   1          T4H = (65536 - (MAIN_Fosc/4/BAUD))>>8;
+  26   1          T4T3M |= 0x20;              //定时器4为1T模式
+  27   1          T4T3M |= 0x80;              //定时器4开始计时
+  28   1      
+  29   1          IE2 = 0x10;                 //使能串口4中断
+  30   1          EA = 1;
+  31   1      }
+  32          
+  33          
+  34          
+  35          void Uart4() interrupt 18
+  36          {
+  37   1        if (S4CON & S4RI)
+  38   1        {
+  39   2          S4CON &= ~S4RI;         //清除S4RI位
+  40   2            
+  41   2          esp_race_buf[esp_race_count] = S4BUF; 
+  42   2          esp_race_count++;
+  43   2          if(esp_race_count>=100)
+C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 2   
+
+  44   2          {
+  45   3            esp_race_count = 0;
+  46   3          }
+  47   2        }
+  48   1        if (S4CON & S4TI)
+  49   1        {
+  50   2          S4CON &= ~S4TI;         //清除S4TI位
+  51   2          uart4_busy = 0;               //清忙标志
+  52   2        }
+  53   1      }
+  54          
+  55          
+  56          void Uart4SendData(unsigned char dat)
+  57          {
+  58   1          
+  59   1        S4CON &= ~S4TB8;        //设置校验位为0
+  60   1        uart4_busy = 1;
+  61   1        S4BUF = dat;
+  62   1        while (uart4_busy);
+  63   1      }
+  64          
+  65          /*----------------------------
+  66          发送字符串
+  67          ----------------------------*/
+  68          void Uart4SendString(char *s)
+  69          {
+  70   1          while (*s)                  //检测字符串结束标志
+  71   1          {
+  72   2              Uart4SendData(*s++);         //发送当前字符
+  73   2          }
+  74   1      }
+  75          
+  76          /*----------esp 部分----------*/
+  77          
+  78          /* 初始化 esp8266 */
+  79          void espInit(char *SSID, char *passwd, char *SIP, char *SPORT)
+  80          {
+  81   1          Uart4Init();
+  82   1        uart1SendString("u4 init end\r\n");
+  83   1      
+  84   1      /*----------*/
+  85   1        Uart4SendString("AT+CWJAP=\"");
+  86   1          Uart4SendString(SSID);
+  87   1          Uart4SendString("\",\"");
+  88   1          Uart4SendString(passwd);
+  89   1          Uart4SendString("\"\r\n");
+  90   1      
+  91   1        uart1SendString("AT+CWJAP=\"");
+  92   1          uart1SendString(SSID);
+  93   1          uart1SendString("\",\"");
+  94   1          uart1SendString(passwd);
+  95   1          uart1SendString("\"\r\n");
+  96   1        delay_10s();
+  97   1        uart1SendString("race:\r\n");//串口1发送信息
+  98   1        esp_race_buf[esp_race_count] = '\0';
+  99   1        uart1SendString(esp_race_buf);
+ 100   1        delay_ms(1000);//延时1秒
+ 101   1      
+ 102   1        WDT_CONTR = 0x17;
+ 103   1        
+ 104   1      /*----------*/
+ 105   1        esp_race_count = 0;//串口4接收计数清零
+C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 3   
+
+ 106   1        Uart4SendString("AT+CWMODE=1\r\n");
+ 107   1        uart1SendString("AT+CWMODE=1\r\n");
+ 108   1        delay_10s();
+ 109   1        uart1SendString("race:\r\n");//串口1发送信息
+ 110   1        esp_race_buf[esp_race_count] = '\0';
+ 111   1        uart1SendString(esp_race_buf);//将串口4收到的数据通过串口1发送给电脑
+ 112   1        delay_ms(2000);
+ 113   1      
+ 114   1        WDT_CONTR = 0x17;
+ 115   1        
+ 116   1      /*----------*/
+ 117   1        esp_race_count = 0;//串口4接收计数清零
+ 118   1        Uart4SendString("AT+CIPMUX=0\r\n");//串口4发送AT命令给WIFI模块
+ 119   1        uart1SendString("AT+CIPMUX=0\r\n");
+ 120   1        delay_10s();//
+ 121   1        uart1SendString("race:\r\n");//串口1发送信息
+ 122   1        esp_race_buf[esp_race_count] = '\0';
+ 123   1        uart1SendString(esp_race_buf);//将串口4收到的数据通过串口1发送给电脑
+ 124   1        delay_ms(2000);
+ 125   1      
+ 126   1        WDT_CONTR = 0x17;
+ 127   1        
+ 128   1      /*----------*/
+ 129   1        esp_race_count = 0;//串口4接收计数清零
+ 130   1      
+ 131   1        Uart4SendString("send:\r\nAT+CIPSTART=\"TCP\",\"");
+ 132   1          Uart4SendString(SIP);
+ 133   1          Uart4SendString("\",");
+ 134   1          Uart4SendString(SPORT);
+ 135   1          Uart4SendString("\r\n");
+ 136   1      
+ 137   1        uart1SendString("send:\r\nAT+CIPSTART=\"TCP\",\"");
+ 138   1          uart1SendString(SIP);
+ 139   1          uart1SendString("\",");
+ 140   1          uart1SendString(SPORT);
+ 141   1          uart1SendString("\r\n");
+ 142   1        delay_10s();//
+ 143   1        uart1SendString("race:\r\n");//串口1发送信息
+ 144   1        esp_race_buf[esp_race_count] = '\0';
+ 145   1        uart1SendString(esp_race_buf);//将串口4收到的数据通过串口1发送给电脑
+ 146   1      
+ 147   1        WDT_CONTR = 0x17;
+ 148   1      
+ 149   1        delay_ms(2000);//
+ 150   1      
+ 151   1          uart1SendString("esp init end \r\n");
+ 152   1      }
+ 153          
+ 154          // void espSend(unsigned int length, char *wifi_send_buff)
+ 155          // {
+ 156          //     char templength = length;
+ 157          
+ 158          //     char buf[16];
+ 159          //     int i = 0;
+ 160          
+ 161          //     //uart1SendString("\r\nuse espSend\r\nlength is %d \r\n",length);
+ 162          
+ 163          //     esp_race_count = 0;//串口4接收计数清零
+ 164          
+ 165          //  Uart4SendString("send:\r\nAT+CIPSEND=");
+ 166          
+ 167          //     while (length > 0) {
+C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 4   
+
+ 168          //         buf[i++] = length % 10 + '0';  // 将每一位数字转换为字符
+ 169          //         length /= 10;
+ 170          //     }
+ 171          
+ 172          //     while (i-- > 0) {
+ 173          //         Uart4SendData(buf[i]);  // 逆序输出每一位数字字符
+ 174          //         uart1SendChar(buf[i]);
+ 175          //    uart1SendString("\r\n");
+ 176          //     }
+ 177          
+ 178          //     Uart4SendString("\r\n");
+ 179          
+ 180          //  while(1){
+ 181          //    if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
+ 182          //      break;
+ 183          //  }
+ 184          
+ 185          //     uart1SendString("\r\nrace:\r\n");//
+ 186          //     esp_race_buf[esp_race_count] = '\0';
+ 187          //  uart1SendString(esp_race_buf);
+ 188          
+ 189          //     esp_race_count = 0;//串口4接收计数清零
+ 190          //     i = 0;
+ 191          //     uart1SendString("\r\nwifi_send_buff\r\n");
+ 192          //     while(i < templength)
+ 193          //     {
+ 194          //         Uart4SendData(wifi_send_buff[i]);
+ 195          //         //uart1SendString("%c",wifi_send_buff[i]);
+ 196          //         i++;
+ 197          //     }
+ 198          
+ 199          //  Uart4SendString(wifi_send_buff);//串口4发送需要发送的数据   数据在wifi_send_buf 数组�
+             -�   数组的定义在最上面
+ 200          //  delay_ms(1000);//
+ 201          
+ 202          //     Uart4SendString("+++");
+ 203          //  delay_ms(2000);
+ 204          // }
+ 205          
+ 206          unsigned char MQTTConnect()
+ 207          {
+ 208   1      
+ 209   1        unsigned int num = 0;
+ 210   1        delay_ms(100);
+ 211   1      
+ 212   1        Uart4SendString("send:\r\nAT+CIPSEND=191\r\n");
+ 213   1      
+ 214   1        while(1){
+ 215   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
+ 216   2            break;
+ 217   2        }
+ 218   1        delay_ms(1000);
+ 219   1      
+ 220   1        Uart4SendData(0x10);
+ 221   1      
+ 222   1        for(num = 1;num < 191;num++)
+ 223   1        {
+ 224   2          Uart4SendData(MQTTConnectData[num]);
+ 225   2        }
+ 226   1        delay_ms(1000);
+ 227   1      
+ 228   1          Uart4SendString("+++");
+C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 5   
+
+ 229   1        delay_ms(2000);
+ 230   1        return 1;
+ 231   1      }
+ 232          
+ 233          unsigned char MQTTPublish(char *mqttdata)
+ 234          {
+ 235   1        unsigned int num = 0;
+ 236   1      
+ 237   1        MQTTPublishData[41] = mqttdata[0];
+ 238   1        MQTTPublishData[42] = mqttdata[1];
+ 239   1        MQTTPublishData[43] = mqttdata[2];
+ 240   1        MQTTPublishData[44] = mqttdata[3];
+ 241   1        MQTTPublishData[45] = mqttdata[4];
+ 242   1        MQTTPublishData[46] = mqttdata[5];
+ 243   1        MQTTPublishData[47] = mqttdata[6];
+ 244   1      
+ 245   1        Uart4SendString("send:\r\nAT+CIPSEND=48\r\n");
+ 246   1        while(1){
+ 247   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
+ 248   2            break;
+ 249   2        }
+ 250   1        delay_ms(1000);
+ 251   1      
+ 252   1        for(num = 0;num < 48;num++)
+ 253   1        {
+ 254   2          Uart4SendData(MQTTPublishData[num]);
+ 255   2        }
+ 256   1        delay_ms(1000);
+ 257   1      
+ 258   1          Uart4SendString("+++");
+ 259   1        delay_ms(2000);
+ 260   1        return 1;
+ 261   1      }
+ 262          unsigned char MQTTPing()
+ 263          {
+ 264   1        unsigned int num = 0;
+ 265   1        Uart4SendString("send:\r\nAT+CIPSEND=2\r\n");
+ 266   1        while(1){
+ 267   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
+ 268   2            break;
+ 269   2        }
+ 270   1        delay_ms(1000);
+ 271   1      
+ 272   1        for(num = 0;num < 2;num++)
+ 273   1        {
+ 274   2          Uart4SendData(MQTTPingData[num]);
+ 275   2        }
+ 276   1        delay_ms(1000);
+ 277   1      
+ 278   1          Uart4SendString("+++");
+ 279   1        delay_ms(2000);
+ 280   1        return 1;
+ 281   1      }
+ 282          unsigned char MQTTDisconnect()
+ 283          {
+ 284   1        unsigned int num = 0;
+ 285   1        Uart4SendString("send:\r\nAT+CIPSEND=2\r\n");
+ 286   1        while(1){
+ 287   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
+ 288   2            break;
+ 289   2        }
+ 290   1        delay_ms(1000);
+C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 6   
+
+ 291   1      
+ 292   1        for(num = 0;num < 2;num++)
+ 293   1        {
+ 294   2          Uart4SendData(MQTTDisconnectData[num]);
+ 295   2        }
+ 296   1        delay_ms(1000);
+ 297   1      
+ 298   1          Uart4SendString("+++");
+ 299   1        delay_ms(2000);
+ 300   1        return 1;
+ 301   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1146    ----
+   CONSTANT SIZE    =    191    ----
+   XDATA SIZE       =    345      17
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

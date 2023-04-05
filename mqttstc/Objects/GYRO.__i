@@ -1,0 +1,1 @@
+"include\GYRO.c" LARGE OPTIMIZE (8,SPEED) BROWSE INCDIR(.\include) DEBUG OBJECTEXTEND PRINT(.\Listings\GYRO.lst) TABS (2) OBJECT(.\Objects\GYRO.obj)

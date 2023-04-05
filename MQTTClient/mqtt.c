@@ -132,6 +132,7 @@ static void MQTTSendDataToBuff(void* data, unsigned int n, DataType_t dataType)
 	while (n--)
 	{
 		*mqtt.sendBuffPointNow++ = *(char*)data;
+		//printf("%c", *(char*)data);
 		data = (char*)data + dataType;
 	}
 }

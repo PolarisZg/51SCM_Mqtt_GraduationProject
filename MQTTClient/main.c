@@ -51,12 +51,22 @@ char receiveBuff[MQTT_BUFF_SIZE] = { 0 };
  */
 int MQTTSendData(const char* data, unsigned int length)
 {
-	/* 发送数据到服务端 */
-	if (send(sock, data, length, 0) > 0)
+	///* 发送数据到服务端 */
+	send(sock, data, length, 0);
+	//{
+	//	return 1;
+	//}
+	//return 0;
+
+	unsigned char temp = 0;
+	printf("\n\nlength is %d\n\n", length);
+	while (length--)
 	{
-		return 1;
+		temp = *data++;
+		printf("0x%02X ,", temp);
 	}
-	return 0;
+
+	return 1;
 }
 
 
@@ -145,14 +155,21 @@ int main()
 	/* 连接CONNECT */
 	printf("Connect = %d\n", Connect());
 	Sleep(100);
+	printf("\n------------\n");
 
 	/* 发布消息PUBLISH */
 	{
-		char tempPayload[] = { "qasdfghjk" };
+		char tempPayload[] = { "#######" };
 		strDataPublish(tempPayload);
 	}
 	printf("Publish = %d\n", Publish());
 	Sleep(100);
+
+
+	printf("\nPing = %d\n",MQTTPing());
+	Sleep(100);
+
+	printf("\n Disconnect = %d\n", MQTTDisconnect());
 
 
 
