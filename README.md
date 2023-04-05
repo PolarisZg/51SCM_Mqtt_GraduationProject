@@ -179,6 +179,303 @@ delay_ms(2000);
 
 8. 还是要吐槽一下那个混乱的函数命名
 
+## vmware虚拟机配置服务器
+
+**首先非常感谢chat GPT 做出的巨大贡献**<br>
+
+**让我们为人工智能而欢呼**<br>
+
+### 安装系统，硬件配置
+
+* 安装系统非常简单，使用vmware推荐的配置即可，这里安装的是centos7系统
+
+* 重要的是网卡，如果物理机能联网，则使用桥接模式。
+	* 如果不能联网，那么就去联网再说
+
+* 进入系统，找到设置，把网卡打开，然后点设置，设置为`Connect automatically`
+
+* 在虚拟机中查看ip地址 
+
+```
+ip a
+```
+
+会显示如下信息
+
+```
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: ens33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:0c:29:7a:77:f0 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.101/24 brd 192.168.1.255 scope global noprefixroute dynamic ens33
+       valid_lft 6582sec preferred_lft 6582sec
+    inet6 fe80::6d92:3890:c003:5dd2/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: virbr0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether 52:54:00:b8:3f:32 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.122.1/24 brd 192.168.122.255 scope global virbr0
+       valid_lft forever preferred_lft forever
+4: virbr0-nic: <BROADCAST,MULTICAST> mtu 1500 qdisc pfifo_fast master virbr0 state DOWN group default qlen 1000
+    link/ether 52:54:00:b8:3f:32 brd ff:ff:ff:ff:ff:ff
+
+```
+重要的是第二块网卡`ens33`，此处显示该网卡的ip地址为`192.168.1.101`和我本机的ip地址`192.168.1.103`很相似(嘛，毕竟是桥接模式)
+
+### ssh
+
+* 查看是否安装了ssh
+	* ssh的连接是mysql连接的第一步
+	* 查看ssh的安装
+
+	```
+	rpm -qa|grep -E "openssh"
+	```
+
+	ssh服务完全安装的话，应该返回如下信息。一般Linux系统都会内置ssh。
+
+	```
+	openssh-clients-7.4p1-22.el7_9.x86_64
+	openssh-7.4p1-22.el7_9.x86_64
+	openssh-server-7.4p1-22.el7_9.x86_64
+	```
+
+* 启动ssh服务
+
+	```
+	sudo systemctl start sshd
+	```
+
+	* 如果想要开机自启动，可使用以下命令
+
+	```
+	sudo systemctl enable sshd
+	```
+
+* 检查ssh服务是否正常启动
+
+	```
+	sudo systemctl status sshd
+	```
+
+	* 正常启动的话，会返回如下信息
+
+	```
+	● sshd.service - OpenSSH server daemon
+   		Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled)
+   		Active: active (running) since Wed 2023-04-05 19:14:12 CST; 2h 36min ago
+     		Docs: man:sshd(8)
+           		man:sshd_config(5)
+ 	Main PID: 35206 (sshd)
+    	Tasks: 1
+   		CGroup: /system.slice/sshd.service
+           		└─35206 /usr/sbin/sshd -D
+
+	Apr 05 19:14:12 localhost.localdomain systemd[1]: Stopped OpenSSH server daemon.
+	Apr 05 19:14:12 localhost.localdomain systemd[1]: Starting OpenSSH server daemon...
+	Apr 05 19:14:12 localhost.localdomain sshd[35206]: Server listening on 0.0.0.0 port 22.
+	Apr 05 19:14:12 localhost.localdomain sshd[35206]: Server listening on :: port 22.
+	Apr 05 19:14:12 localhost.localdomain systemd[1]: Started OpenSSH server daemon.
+	```
+
+	* 在这段返回信息中，可以看到ssh服务使用了`22`端口，并且允许所有ip地址访问: `0.0.0.0`
+
+* 在物理机上打开ssh客户端，新建连接。地址为`ip a`命令返回的地址，端口为`22`，用户名和密码为登录centos系统所使用的用户名及密码(不建议使用root)
+
+* ssh连接成功就完成了一半
+
+### MySQL
+
+* 安装
+	* 需要注意的是 CentOS 7 版本中 MySQL数据库已从默认的程序列表中移除，因此要访问相关网站下载rpm安装包进行安装
+
+	1. **逐句输入以下命令**，由于网址原因，不保证第一条命令会被正确的执行，因此不保证第二条命令被正确执行，可通过访问MySQL官网 [https://dev.mysql.com/downloads/repo/yum/](https://dev.mysql.com/downloads/repo/yum/)自己修改相应的地址及包名
+	
+	```
+	wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+	rpm -ivh mysql-community-release-el7-5.noarch.rpm
+	yum update
+	yum install mysql-server
+	```
+
+	2. **权限设置：**
+
+	```
+	chown -R mysql:mysql /var/lib/mysql/
+	```
+
+	3. **初始化 MySQL：**
+
+	```
+	mysqld --initialize
+	```
+
+	4. **启动 MySQL：**
+
+	```
+	systemctl start mysqld
+	```
+
+	* 查看 MySQL 运行状态：
+
+	```
+	systemctl status mysqld
+	```
+
+	* 验证 MySQL 安装
+
+	```
+	mysqladmin --version
+	```
+
+	linux上该命令将输出以下结果，该结果基于系统信息：
+
+	```
+	mysqladmin  Ver 8.42 Distrib 5.6.51, for Linux on x86_64
+	```
+
+	5. **接下来，需要运行 MySQL 安全脚本，以确保 MySQL 安全：**
+
+	```
+	sudo mysql_secure_installation
+	```
+
+	该脚本将提示您设置 MySQL 根密码、删除匿名用户、禁止远程 root 登录等。按照提示完成操作。
+
+	6. **重启MySQL服务以使更改生效：**
+
+	```
+	sudo systemctl restart mysqld
+	```
+
+* 使用物理机客户端连接虚拟机中的mysql数据库
+
+	1. **查看 MySQL 服务器正在监听的端口：**
+
+	```
+	sudo netstat -tlnp | grep mysqld
+	```
+
+	* 这将输出正在运行的 MySQL 服务器进程的信息，包括 PID（进程ID），端口号以及绑定的 IP 地址。
+
+	```
+	tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      69966/mysqld  
+	```
+
+	2. **在防火墙上允许连接到MySQL服务器的端口**。在CentOS 7上，默认情况下防火墙使用的是firewalld，您可以使用以下命令添加MySQL服务的firewalld规则：
+
+	```
+	sudo firewall-cmd --add-service=mysql --permanent
+	sudo firewall-cmd --reload
+	```
+
+	这将打开3306端口，允许从远程访问MySQL服务器。请注意，远程访问MySQL服务器是不安全的，因此应该尽可能限制MySQL服务器只对受信任的主机开放。
+
+	3. **编辑配置文件`/etc/my.cnf`**，在[mysqld]下添加以下行，以允许来自远程的连接
+
+	```
+	[mysqld]
+	bind-address = 0.0.0.0
+	skip-name-resolve
+	```
+
+	4. 保存并退出配置文件，然后重启 MySQL 服务：
+
+	```
+	sudo systemctl restart mysqld
+	```
+
+	5. **创建MySQL用户，通过这个用户进行远程访问**
+
+		51. 使用 root 用户或具有 root 权限的用户登录 MySQL：
+
+		```
+		mysql -u root -p
+		```
+
+		52. 在 MySQL shell 中，创建一个新用户并设置密码：
+
+		```
+		CREATE USER 'poi'@'%' IDENTIFIED BY 'poi';
+		```
+
+		其中，前一个 `poi` 是新用户的用户名，后一个 `poi` 是新用户的密码。`%` 为希望该用户能够从远程连接到 MySQL.
+
+		53. 授予新用户访问数据库的权限：
+
+		```
+		GRANT ALL PRIVILEGES ON *.* TO 'poi'@'%';
+		```
+		
+		`*.*` 为希望该用户能够访问任何数据库.
+
+		54. 刷新权限：
+
+		```
+		FLUSH PRIVILEGES;
+		```
+
+		现在，应该可以使用新用户访问 MySQL 服务器了
+
+### 遇到的问题
+
+1. 哎呀为什么我用nat模式没法连接虚拟机<br>
+
+	> 使用桥接模式设置虚拟机网卡
+
+2. 连接虚拟机中MySQL数据库时提示`IP address '192.168.1.103' could not be resolved: Name or service not known`
+
+	> 出现这个提示应该是使用root用户访问MySQL，在MySQL中单独创建一个用户进行远程访问即可
+
+3. 啊啊啊我还有很多问题怎么办？
+
+	> 去查看软件的日志，可以解决很多问题，MySQL日志所在地址为`/var/log/mysqld.log`
+
+4. 虚拟机时间对不上的解决方案
+
+	* 要让 CentOS 的系统时间与标准时间同步，您可以使用 NTP 服务。NTP（Network Time Protocol）是一种用于同步计算机系统时间的协议，它通过互联网上的时间服务器获取标准时间，并将其同步到本地系统上。
+
+	以下是在 CentOS 7 上安装和配置 NTP 服务的步骤：
+
+	1. 安装 NTP 服务：
+
+	```
+	sudo yum install ntp
+	```
+
+	2. 启动 NTP 服务并设置为开机自启动：
+
+	```
+	sudo systemctl start ntpd
+	sudo systemctl enable ntpd
+	```
+
+	3. 检查 NTP 服务是否正在运行：
+
+	```
+	sudo systemctl status ntpd
+	```
+
+	（可选）如果您希望将系统时区更改为您所在的时区，可以使用 timedatectl 命令来更改时区设置。例如，如果您希望将时区设置为北京时间：
+
+	```
+	sudo timedatectl set-timezone Asia/Shanghai
+	```
+
+	在此示例中，我们将时区设置为 Asia/Shanghai。
+
+	现在，您的 CentOS 系统应该会从 NTP 服务器同步标准时间。如果您想手动强制同步时间，可以使用 ntpdate 命令。例如，要强制同步时间到 pool.ntp.org 时间服务器：
+
+	```
+	sudo ntpdate pool.ntp.org
+	```
+
+	请注意，如果您的虚拟机和宿主机之间的时间差距太大，可能会导致网络连接问题。因此，建议您使用 NTP 服务来确保系统时间的准确性。
+
+
 ## 华北电力大学毕业设计(论 文) 开题报告
 
 |题目|基于单片机的远程数据采集系统|
