@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>51stc_mqtt_amqp_msg</title>
+  <style>
+    #current-box {
+      display: inline-block;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      width: 280px;
+      height: 40px;
+      border: 2px solid black;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #history {
+      border-top: 2px solid black;
+      padding-top: 30px;
+    }
+
+    .box {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 1px solid black;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .black {
+      background-color: black;
+      color: white;
+    }
+
+    .white {
+      background-color: white;
+      color: black;
+    }
+
+    .transparent {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div id="current-box"></div>
+
+  <div id="history">
+    <hr>
+    <div id="history-container"></div>
+  </div>
+
+  <button id="randomize-button">random</button>
+
+  <script>
+
+    var boxStates = ["black", "white", "black", "white", "white", "black", "white"];
+
+    var historyContainer = document.getElementById("history-container");
+    var randomizeButton = document.getElementById("randomize-button");
+
+    function iniBoxSates() {
+      for(var i = 0; i < 7; i++) {
+        var newBox = document.createElement("div");
+        newBox.classList.add("box");
+        newBox.classList.add(boxStates[i]);
+        newBox.innerHTML = (i+1);
+        document.querySelector("#current-box").appendChild(newBox);
+      }
+    }
+    iniBoxSates();
+    var boxElements = document.querySelectorAll("#current-box > .box");
+
+    console.log("boxElements")
+    console.log(boxElements);
+
+    function renderBoxes() {
+      for (var i = 0; i < boxStates.length; i++) {
+        boxElements[i].innerHTML = (i+1);
+        boxElements[i].classList.remove("black", "white");
+        boxElements[i].classList.add(boxStates[i]);
+      }
+    }
+
+    function updateBoxStates(newStates) {
+      boxStates = newStates;
+      renderBoxes();
+      updateHistory();
+    }
+
+    function updateHistory() {
+      var historyDiv = document.createElement("div");
+      historyDiv.className = "history-item";
+      historyDiv.style.marginBottom = "10px";
+      for (var i = 0; i < boxStates.length; i++) {
+        var boxDiv = document.createElement("div");
+        boxDiv.className = "box transparent";
+        boxDiv.innerHTML = (i+1);
+        boxDiv.classList.add(boxStates[i]);
+        historyDiv.appendChild(boxDiv);
+      }
+      historyContainer.insertBefore(historyDiv, historyContainer.firstChild);
+    }
+
+    randomizeButton.addEventListener("click", function() {
+      var newStates = [];
+      for (var i = 0; i < boxStates.length; i++) {
+        if (Math.random() < 0.5) {
+          newStates.push("black");
+        } else {
+          newStates.push("white");
+        }
+      }
+      updateBoxStates(newStates);
+    });
+
+    renderBoxes();
+  </script>
+</body>
+</html>
