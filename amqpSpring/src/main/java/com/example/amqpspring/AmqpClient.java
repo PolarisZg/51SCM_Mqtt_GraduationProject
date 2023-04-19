@@ -14,7 +14,6 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
-import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
@@ -37,7 +36,7 @@ import org.springframework.stereotype.Component;
 @Scope("singleton")
 public class AmqpClient {
     @Autowired
-    BasicAmqpMessageRepository basicAmqpMessageRepository;
+    SaveAmqpMessageRepository saveAmqpMessageRepository;
 
     private final Logger logger = LoggerFactory.getLogger(AmqpClient.class);
     private String accessKey = "LTAI5tJsnjAUmeSDwurZQYxW";
@@ -162,7 +161,7 @@ MNLSCAh8Ud9wDLTtY9hFCt8metRZpk */
                     + ",\n messageId = " + messageId
                     + ",\n content = " + content);
 
-            basicAmqpMessageRepository.save(amqpMessage);
+            saveAmqpMessageRepository.save(amqpMessage);
 
         } catch (Exception e) {
             logger.error("processMessage occurs error ", e);
