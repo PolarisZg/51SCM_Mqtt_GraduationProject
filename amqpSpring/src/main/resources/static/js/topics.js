@@ -30,6 +30,7 @@ function loadContent(topicName){
             contents.empty();
             for(var i = 0 ; i < messages.length; i++){
                 var item = $("<li>").text("time : " + messages[i].timestamp.replace(/[.].*/, "") + "-------content : " + messages[i].content);
+                item.addClass("message")
                 contents.append(item);
             }
         },
