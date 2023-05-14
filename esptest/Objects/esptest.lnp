@@ -1,0 +1,8 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\delay.obj",
+".\Objects\GPIO.obj",
+".\Objects\Uart_4.obj",
+".\Objects\Uart1.obj" 
+TO ".\Objects\esptest" 
+PRINT(".\Listings\esptest.m51") RAMSIZE(256) 

@@ -1,4 +1,4 @@
-C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 1   
+C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 1   
 
 
 C51 COMPILER V9.57.0.0, COMPILATION OF MODULE ESP
@@ -62,7 +62,7 @@ line level    source
   41   2          esp_race_buf[esp_race_count] = S4BUF; 
   42   2          esp_race_count++;
   43   2          if(esp_race_count>=100)
-C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 2   
+C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 2   
 
   44   2          {
   45   3            esp_race_count = 0;
@@ -126,7 +126,7 @@ line level    source
  103   1        
  104   1      /*----------*/
  105   1        esp_race_count = 0;//串口4接收计数清零
-C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 3   
+C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 3   
 
  106   1        Uart4SendString("AT+CWMODE=1\r\n");
  107   1        uart1SendString("AT+CWMODE=1\r\n");
@@ -153,7 +153,7 @@ line level    source
  128   1      /*----------*/
  129   1        esp_race_count = 0;//串口4接收计数清零
  130   1      
- 131   1        Uart4SendString("send:\r\nAT+CIPSTART=\"TCP\",\"");
+ 131   1        Uart4SendString("AT+CIPSTART=\"TCP\",\"");
  132   1          Uart4SendString(SIP);
  133   1          Uart4SendString("\",");
  134   1          Uart4SendString(SPORT);
@@ -190,7 +190,7 @@ line level    source
  165          //  Uart4SendString("send:\r\nAT+CIPSEND=");
  166          
  167          //     while (length > 0) {
-C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 4   
+C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 4   
 
  168          //         buf[i++] = length % 10 + '0';  // 将每一位数字转换为字符
  169          //         length /= 10;
@@ -235,107 +235,130 @@ line level    source
  207          {
  208   1      
  209   1        unsigned int num = 0;
- 210   1        delay_ms(100);
- 211   1      
- 212   1        Uart4SendString("send:\r\nAT+CIPSEND=191\r\n");
- 213   1      
- 214   1        while(1){
- 215   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
- 216   2            break;
- 217   2        }
- 218   1        delay_ms(1000);
- 219   1      
- 220   1        Uart4SendData(0x10);
+ 210   1        esp_race_count = 0;
+ 211   1        delay_ms(100);
+ 212   1      
+ 213   1        Uart4SendString("AT+CIPSEND=191\r\n");
+ 214   1      
+ 215   1        while(1){
+ 216   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
+ 217   2            break;
+ 218   2        }
+ 219   1        delay_ms(1000);
+ 220   1        esp_race_count = 0;
  221   1      
- 222   1        for(num = 1;num < 191;num++)
- 223   1        {
- 224   2          Uart4SendData(MQTTConnectData[num]);
- 225   2        }
- 226   1        delay_ms(1000);
- 227   1      
- 228   1          Uart4SendString("+++");
-C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 5   
+ 222   1        Uart4SendData(0x10);
+ 223   1      
+ 224   1        for(num = 1;num < 191;num++)
+ 225   1        {
+ 226   2          Uart4SendData(MQTTConnectData[num]);
+ 227   2        }
+ 228   1        delay_ms(1000);
+C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 5   
 
- 229   1        delay_ms(2000);
- 230   1        return 1;
- 231   1      }
- 232          
- 233          unsigned char MQTTPublish(char *mqttdata)
- 234          {
- 235   1        unsigned int num = 0;
- 236   1      
- 237   1        MQTTPublishData[41] = mqttdata[0];
- 238   1        MQTTPublishData[42] = mqttdata[1];
- 239   1        MQTTPublishData[43] = mqttdata[2];
- 240   1        MQTTPublishData[44] = mqttdata[3];
- 241   1        MQTTPublishData[45] = mqttdata[4];
- 242   1        MQTTPublishData[46] = mqttdata[5];
- 243   1        MQTTPublishData[47] = mqttdata[6];
- 244   1      
- 245   1        Uart4SendString("send:\r\nAT+CIPSEND=48\r\n");
- 246   1        while(1){
- 247   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
- 248   2            break;
- 249   2        }
- 250   1        delay_ms(1000);
- 251   1      
- 252   1        for(num = 0;num < 48;num++)
- 253   1        {
- 254   2          Uart4SendData(MQTTPublishData[num]);
- 255   2        }
- 256   1        delay_ms(1000);
- 257   1      
- 258   1          Uart4SendString("+++");
- 259   1        delay_ms(2000);
- 260   1        return 1;
- 261   1      }
- 262          unsigned char MQTTPing()
- 263          {
- 264   1        unsigned int num = 0;
- 265   1        Uart4SendString("send:\r\nAT+CIPSEND=2\r\n");
- 266   1        while(1){
- 267   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
- 268   2            break;
- 269   2        }
- 270   1        delay_ms(1000);
- 271   1      
- 272   1        for(num = 0;num < 2;num++)
- 273   1        {
- 274   2          Uart4SendData(MQTTPingData[num]);
- 275   2        }
- 276   1        delay_ms(1000);
- 277   1      
- 278   1          Uart4SendString("+++");
+ 229   1        WDT_CONTR = 0X37; //喂狗操作 
+ 230   1        
+ 231   1        uart1SendChar('0'+esp_race_count);
+ 232   1        Uart1SendData(esp_race_buf,esp_race_count);
+ 233   1        //Uart4SendString("+++");
+ 234   1        
+ 235   1        delay_ms(2000);
+ 236   1        WDT_CONTR = 0X37; //喂狗操作 
+ 237   1        delay_ms(2000);
+ 238   1        WDT_CONTR = 0X37; //喂狗操作 
+ 239   1        delay_ms(2000);
+ 240   1        WDT_CONTR = 0X37; //喂狗操作 
+ 241   1        delay_ms(2000);
+ 242   1        WDT_CONTR = 0X37; //喂狗操作 
+ 243   1        delay_ms(2000);
+ 244   1        WDT_CONTR = 0X37; //喂狗操作 
+ 245   1        return 1;
+ 246   1      }
+ 247          
+ 248          unsigned char MQTTPublish(char *mqttdata)
+ 249          {
+ 250   1        unsigned int num = 0;
+ 251   1        esp_race_count = 0;
+ 252   1      
+ 253   1        MQTTPublishData[41] = mqttdata[0];
+ 254   1        MQTTPublishData[42] = mqttdata[1];
+ 255   1        MQTTPublishData[43] = mqttdata[2];
+ 256   1        MQTTPublishData[44] = mqttdata[3];
+ 257   1        MQTTPublishData[45] = mqttdata[4];
+ 258   1        MQTTPublishData[46] = mqttdata[5];
+ 259   1        MQTTPublishData[47] = mqttdata[6];
+ 260   1      
+ 261   1        Uart4SendString("AT+CIPSEND=48\r\n");
+ 262   1        
+ 263   1        while(1){
+ 264   2          if((esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')||(esp_race_count - 1 >= 0 && esp
+             -_race_buf[esp_race_count - 1] == '>')||(esp_race_count >= 0 && esp_race_buf[esp_race_count] == '>'))
+ 265   2            break;
+ 266   2        }
+ 267   1        delay_ms(1000);
+ 268   1        WDT_CONTR = 0X37; //喂狗操作 
+ 269   1      
+ 270   1        for(num = 0;num < 48;num++)
+ 271   1        {
+ 272   2          Uart4SendData(MQTTPublishData[num]);
+ 273   2        }
+ 274   1        delay_ms(1000);
+ 275   1        WDT_CONTR = 0X37; //喂狗操作 
+ 276   1      
+ 277   1        Uart4SendString("+++");
+ 278   1        WDT_CONTR = 0X37; //喂狗操作 
  279   1        delay_ms(2000);
  280   1        return 1;
  281   1      }
- 282          unsigned char MQTTDisconnect()
+ 282          unsigned char MQTTPing()
  283          {
  284   1        unsigned int num = 0;
- 285   1        Uart4SendString("send:\r\nAT+CIPSEND=2\r\n");
- 286   1        while(1){
- 287   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
- 288   2            break;
- 289   2        }
- 290   1        delay_ms(1000);
-C51 COMPILER V9.57.0.0   ESP                                                               03/29/2023 22:33:00 PAGE 6   
+ 285   1        esp_race_count = 0;
+ 286   1        Uart4SendString("AT+CIPSEND=2\r\n");
+ 287   1        while(1){
+ 288   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
+ 289   2            break;
+C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 6   
 
- 291   1      
- 292   1        for(num = 0;num < 2;num++)
- 293   1        {
- 294   2          Uart4SendData(MQTTDisconnectData[num]);
- 295   2        }
- 296   1        delay_ms(1000);
- 297   1      
- 298   1          Uart4SendString("+++");
- 299   1        delay_ms(2000);
- 300   1        return 1;
- 301   1      }
+ 290   2        }
+ 291   1        delay_ms(1000);
+ 292   1      
+ 293   1        for(num = 0;num < 2;num++)
+ 294   1        {
+ 295   2          Uart4SendData(MQTTPingData[num]);
+ 296   2        }
+ 297   1        delay_ms(1000);
+ 298   1      
+ 299   1          Uart4SendString("+++");
+ 300   1        delay_ms(2000);
+ 301   1        return 1;
+ 302   1      }
+ 303          unsigned char MQTTDisconnect()
+ 304          {
+ 305   1        unsigned int num = 0;
+ 306   1        esp_race_count = 0;
+ 307   1        Uart4SendString("AT+CIPSEND=2\r\n");
+ 308   1        while(1){
+ 309   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
+ 310   2            break;
+ 311   2        }
+ 312   1        delay_ms(1000);
+ 313   1      
+ 314   1        for(num = 0;num < 2;num++)
+ 315   1        {
+ 316   2          Uart4SendData(MQTTDisconnectData[num]);
+ 317   2        }
+ 318   1        delay_ms(1000);
+ 319   1      
+ 320   1          Uart4SendString("+++");
+ 321   1        delay_ms(2000);
+ 322   1        return 1;
+ 323   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1146    ----
-   CONSTANT SIZE    =    191    ----
+   CODE SIZE        =   1304    ----
+   CONSTANT SIZE    =    190    ----
    XDATA SIZE       =    345      17
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----

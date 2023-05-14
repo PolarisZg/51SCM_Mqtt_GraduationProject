@@ -128,7 +128,7 @@ void espInit(char *SSID, char *passwd, char *SIP, char *SPORT)
 /*----------*/
 	esp_race_count = 0;//串口4接收计数清零
 
-	Uart4SendString("send:\r\nAT+CIPSTART=\"TCP\",\"");
+	Uart4SendString("AT+CIPSTART=\"TCP\",\"");
     Uart4SendString(SIP);
     Uart4SendString("\",");
     Uart4SendString(SPORT);
@@ -207,15 +207,17 @@ unsigned char MQTTConnect()
 {
 
 	unsigned int num = 0;
+	esp_race_count = 0;
 	delay_ms(100);
 
-	Uart4SendString("send:\r\nAT+CIPSEND=191\r\n");
+	Uart4SendString("AT+CIPSEND=191\r\n");
 
 	while(1){
 		if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
 			break;
 	}
 	delay_ms(1000);
+	esp_race_count = 0;
 
 	Uart4SendData(0x10);
 
@@ -224,15 +226,29 @@ unsigned char MQTTConnect()
 		Uart4SendData(MQTTConnectData[num]);
 	}
 	delay_ms(1000);
-
-    Uart4SendString("+++");
+	WDT_CONTR = 0X37; //喂狗操作 
+	
+	uart1SendChar('0'+esp_race_count);
+	Uart1SendData(esp_race_buf,esp_race_count);
+  //Uart4SendString("+++");
+	
 	delay_ms(2000);
+	WDT_CONTR = 0X37; //喂狗操作 
+	delay_ms(2000);
+	WDT_CONTR = 0X37; //喂狗操作 
+	delay_ms(2000);
+	WDT_CONTR = 0X37; //喂狗操作 
+	delay_ms(2000);
+	WDT_CONTR = 0X37; //喂狗操作 
+	delay_ms(2000);
+	WDT_CONTR = 0X37; //喂狗操作 
 	return 1;
 }
 
 unsigned char MQTTPublish(char *mqttdata)
 {
 	unsigned int num = 0;
+	esp_race_count = 0;
 
 	MQTTPublishData[41] = mqttdata[0];
 	MQTTPublishData[42] = mqttdata[1];
@@ -242,7 +258,7 @@ unsigned char MQTTPublish(char *mqttdata)
 	MQTTPublishData[46] = mqttdata[5];
 	MQTTPublishData[47] = mqttdata[6];
 
-	Uart4SendString("send:\r\nAT+CIPSEND=48\r\n");
+	Uart4SendString("AT+CIPSEND=48\r\n");
 	
 	while(1){
 		if((esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')||(esp_race_count - 1 >= 0 && esp_race_buf[esp_race_count - 1] == '>')||(esp_race_count >= 0 && esp_race_buf[esp_race_count] == '>'))
@@ -266,7 +282,8 @@ unsigned char MQTTPublish(char *mqttdata)
 unsigned char MQTTPing()
 {
 	unsigned int num = 0;
-	Uart4SendString("send:\r\nAT+CIPSEND=2\r\n");
+	esp_race_count = 0;
+	Uart4SendString("AT+CIPSEND=2\r\n");
 	while(1){
 		if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
 			break;
@@ -286,7 +303,8 @@ unsigned char MQTTPing()
 unsigned char MQTTDisconnect()
 {
 	unsigned int num = 0;
-	Uart4SendString("send:\r\nAT+CIPSEND=2\r\n");
+	esp_race_count = 0;
+	Uart4SendString("AT+CIPSEND=2\r\n");
 	while(1){
 		if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
 			break;

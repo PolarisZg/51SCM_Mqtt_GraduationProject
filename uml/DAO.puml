@@ -1,0 +1,8 @@
+@startuml 
+start
+:@Repository标记DAO层实现类;
+:@Component创建受框架管理的自定义class;
+:@Autowired向接口注入实例;
+:调用实例中相关方法;
+end
+@enduml 

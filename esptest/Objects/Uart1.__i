@@ -1,0 +1,1 @@
+"include\Uart1.c" LARGE OPTIMIZE (8,SPEED) BROWSE INCDIR(.\include) DEBUG OBJECTEXTEND PRINT(.\Listings\Uart1.lst) TABS (2) OBJECT(.\Objects\Uart1.obj)

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface SaveAmqpMessageRepository extends JpaRepository<AmqpMessage,Long> {
     AmqpMessage save(AmqpMessage amqpMessage);
 }
