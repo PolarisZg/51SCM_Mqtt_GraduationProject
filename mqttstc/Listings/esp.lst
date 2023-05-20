@@ -1,4 +1,4 @@
-C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 1   
+C51 COMPILER V9.57.0.0   ESP                                                               05/19/2023 19:40:30 PAGE 1   
 
 
 C51 COMPILER V9.57.0.0, COMPILATION OF MODULE ESP
@@ -62,7 +62,7 @@ line level    source
   41   2          esp_race_buf[esp_race_count] = S4BUF; 
   42   2          esp_race_count++;
   43   2          if(esp_race_count>=100)
-C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 2   
+C51 COMPILER V9.57.0.0   ESP                                                               05/19/2023 19:40:30 PAGE 2   
 
   44   2          {
   45   3            esp_race_count = 0;
@@ -126,7 +126,7 @@ line level    source
  103   1        
  104   1      /*----------*/
  105   1        esp_race_count = 0;//串口4接收计数清零
-C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 3   
+C51 COMPILER V9.57.0.0   ESP                                                               05/19/2023 19:40:30 PAGE 3   
 
  106   1        Uart4SendString("AT+CWMODE=1\r\n");
  107   1        uart1SendString("AT+CWMODE=1\r\n");
@@ -190,7 +190,7 @@ line level    source
  165          //  Uart4SendString("send:\r\nAT+CIPSEND=");
  166          
  167          //     while (length > 0) {
-C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 4   
+C51 COMPILER V9.57.0.0   ESP                                                               05/19/2023 19:40:30 PAGE 4   
 
  168          //         buf[i++] = length % 10 + '0';  // 将每一位数字转换为字符
  169          //         length /= 10;
@@ -254,7 +254,7 @@ line level    source
  226   2          Uart4SendData(MQTTConnectData[num]);
  227   2        }
  228   1        delay_ms(1000);
-C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 5   
+C51 COMPILER V9.57.0.0   ESP                                                               05/19/2023 19:40:30 PAGE 5   
 
  229   1        WDT_CONTR = 0X37; //喂狗操作 
  230   1        
@@ -262,15 +262,15 @@ line level    source
  232   1        Uart1SendData(esp_race_buf,esp_race_count);
  233   1        //Uart4SendString("+++");
  234   1        
- 235   1        delay_ms(2000);
+ 235   1        delay_ms(200);
  236   1        WDT_CONTR = 0X37; //喂狗操作 
- 237   1        delay_ms(2000);
+ 237   1        delay_ms(200);
  238   1        WDT_CONTR = 0X37; //喂狗操作 
- 239   1        delay_ms(2000);
+ 239   1        delay_ms(200);
  240   1        WDT_CONTR = 0X37; //喂狗操作 
- 241   1        delay_ms(2000);
+ 241   1        delay_ms(200);
  242   1        WDT_CONTR = 0X37; //喂狗操作 
- 243   1        delay_ms(2000);
+ 243   1        delay_ms(200);
  244   1        WDT_CONTR = 0X37; //喂狗操作 
  245   1        return 1;
  246   1      }
@@ -295,19 +295,19 @@ line level    source
              -_race_buf[esp_race_count - 1] == '>')||(esp_race_count >= 0 && esp_race_buf[esp_race_count] == '>'))
  265   2            break;
  266   2        }
- 267   1        delay_ms(1000);
+ 267   1        delay_ms(100);
  268   1        WDT_CONTR = 0X37; //喂狗操作 
  269   1      
  270   1        for(num = 0;num < 48;num++)
  271   1        {
  272   2          Uart4SendData(MQTTPublishData[num]);
  273   2        }
- 274   1        delay_ms(1000);
+ 274   1        delay_ms(100);
  275   1        WDT_CONTR = 0X37; //喂狗操作 
  276   1      
  277   1        Uart4SendString("+++");
  278   1        WDT_CONTR = 0X37; //喂狗操作 
- 279   1        delay_ms(2000);
+ 279   1        delay_ms(200);
  280   1        return 1;
  281   1      }
  282          unsigned char MQTTPing()
@@ -318,7 +318,7 @@ line level    source
  287   1        while(1){
  288   2          if(esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')
  289   2            break;
-C51 COMPILER V9.57.0.0   ESP                                                               05/04/2023 16:48:24 PAGE 6   
+C51 COMPILER V9.57.0.0   ESP                                                               05/19/2023 19:40:30 PAGE 6   
 
  290   2        }
  291   1        delay_ms(1000);

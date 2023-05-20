@@ -1,4 +1,4 @@
-C51 COMPILER V9.57.0.0   DELAY                                                             03/26/2023 16:54:08 PAGE 1   
+C51 COMPILER V9.57.0.0   DELAY                                                             05/19/2023 19:40:30 PAGE 1   
 
 
 C51 COMPILER V9.57.0.0, COMPILATION OF MODULE DELAY
@@ -62,7 +62,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
-C51 COMPILER V9.57.0.0   DELAY                                                             03/26/2023 16:54:08 PAGE 2   
+C51 COMPILER V9.57.0.0   DELAY                                                             05/19/2023 19:40:30 PAGE 2   
 
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

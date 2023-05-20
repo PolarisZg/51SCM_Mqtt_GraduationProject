@@ -1,4 +1,5 @@
 @startuml 
+!theme plain
 start
 :@Repository标记DAO层实现类;
 :@Component创建受框架管理的自定义class;

@@ -35,6 +35,11 @@ body {
     color: #ffcc00;
 }
 
+.options li.active {
+    background-color: white;
+    color: black;
+}
+
 .chat {
     flex: 3 1 75%;
     overflow-y: auto;

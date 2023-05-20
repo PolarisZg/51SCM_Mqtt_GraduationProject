@@ -1,1 +1,0 @@
-"include\OLED.c" LARGE OPTIMIZE (8,SPEED) BROWSE INCDIR(.\include) DEBUG OBJECTEXTEND PRINT(.\Listings\OLED.lst) TABS (2) OBJECT(.\Objects\OLED.obj)

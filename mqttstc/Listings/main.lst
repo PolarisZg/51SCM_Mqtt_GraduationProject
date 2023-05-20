@@ -1,4 +1,4 @@
-C51 COMPILER V9.57.0.0   MAIN                                                              05/04/2023 15:47:17 PAGE 1   
+C51 COMPILER V9.57.0.0   MAIN                                                              05/19/2023 19:40:29 PAGE 1   
 
 
 C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
@@ -23,70 +23,77 @@ line level    source
   13          void main()
   14          {
   15   1        unsigned int i;
-  16   1        i = 0;
-  17   1        
-  18   1        WDT_CONTR = 0x17;
-  19   1        myKeyInit();
-  20   1        WDT_CONTR = 0x17;
-  21   1        Uart1Init();
-  22   1        WDT_CONTR = 0x17;
-  23   1        
-  24   1        uart1SendString("go go go \r\n");
-  25   1        
-  26   1        OLED_Init();      //初始化OLED
-  27   1        WDT_CONTR = 0x17;
-  28   1        OLED_Clear();
-  29   1        OLED_ShowString(0,0,"now push",12);
-  30   1        uart1SendString("oled end \r\n");
-  31   1        WDT_CONTR = 0x17;
-  32   1        
-  33   1        /* 初始化esp8266 */
-  34   1        espInit("Mi 11","qqqqqqqq","47.91.8.141","1883");
-  35   1        WDT_CONTR = 0x17;
-  36   1      
-  37   1        uart1SendString("\r\n now i am delay 10 second \r\n");
-  38   1        //delay_10s();
-  39   1        
-  40   1        /* 连接CONNECT */
-  41   1        MQTTConnect();
-  42   1        delay_ms(1000);
-  43   1        WDT_CONTR = 0X37;
-  44   1        
-  45   1        while(1)
-  46   1        {
-  47   2          delay_ms(1000);
-  48   2          getMyKeyData(wifi_send_buf);
-  49   2      
-  50   2          printf("now push : ");
-  51   2            
-  52   2          for(i = 0 ; i < 7 ; i++)
-  53   2          {
-  54   3            if(wifi_send_buf[i] == '#')
-C51 COMPILER V9.57.0.0   MAIN                                                              05/04/2023 15:47:17 PAGE 2   
+  16   1        int keynum;
+  17   1        int keytemp;
+  18   1        i = 0;
+  19   1        keynum = 0;
+  20   1        
+  21   1        WDT_CONTR = 0x17;
+  22   1        myKeyInit();
+  23   1        WDT_CONTR = 0x17;
+  24   1        Uart1Init();
+  25   1        WDT_CONTR = 0x17;
+  26   1        
+  27   1        uart1SendString("go go go \r\n");
+  28   1        
+  29   1        OLED_Init();      //初始化OLED
+  30   1        WDT_CONTR = 0x17;
+  31   1        OLED_Clear();
+  32   1        OLED_ShowString(0,0,"now push",12);
+  33   1        uart1SendString("oled end \r\n");
+  34   1        WDT_CONTR = 0x17;
+  35   1        
+  36   1        /* 初始化esp8266 */
+  37   1        espInit("Mi 11","qqqqqqqq","47.91.8.141","1883");
+  38   1        WDT_CONTR = 0x17;
+  39   1      
+  40   1        uart1SendString("\r\n now i am delay 10 second \r\n");
+  41   1        //delay_10s();
+  42   1        
+  43   1        /* 连接CONNECT */
+  44   1        MQTTConnect();
+  45   1        WDT_CONTR = 0X37;
+  46   1        delay_ms(100);
+  47   1        WDT_CONTR = 0X37;
+  48   1        
+  49   1        while(1)
+  50   1        {
+  51   2          WDT_CONTR = 0X37; //喂狗操作 
+  52   2          delay_ms(100);
+  53   2          keytemp = getMyKeyData(wifi_send_buf);
+  54   2          if(keynum != keytemp){
+C51 COMPILER V9.57.0.0   MAIN                                                              05/19/2023 19:40:29 PAGE 2   
 
-  55   3            {
-  56   4              OLED_ShowChar(i*8,4,'0' + i,12);
-  57   4            }
-  58   3            else
+  55   3            keynum = keytemp;
+  56   3            printf("now push : ");
+  57   3            
+  58   3            for(i = 0 ; i < 7 ; i++)
   59   3            {
-  60   4              OLED_ShowChar(i*8,4,' ',12);
-  61   4            }
-  62   3          }
-  63   2          WDT_CONTR = 0X37; //喂狗操作 
-  64   2          printf("\r\nwifisendbuff is %s",wifi_send_buf);
-  65   2          printf("\r\n");
-  66   2          MQTTPublish(wifi_send_buf);
-  67   2          WDT_CONTR = 0X37; //喂狗操作 
-  68   2          delay_ms(1000);
-  69   2        }
-  70   1      }
-*** WARNING C316 IN LINE 70 OF main.c: unterminated conditionals
+  60   4              if(wifi_send_buf[i] == '#')
+  61   4              {
+  62   5                OLED_ShowChar(i*8,4,'0' + i,12);
+  63   5              }
+  64   4              else
+  65   4              {
+  66   5                OLED_ShowChar(i*8,4,' ',12);
+  67   5              }
+  68   4            }
+  69   3            WDT_CONTR = 0X37; //喂狗操作 
+  70   3            printf("\r\nwifisendbuff is %s",wifi_send_buf);
+  71   3            printf("\r\n");
+  72   3            MQTTPublish(wifi_send_buf);
+  73   3            WDT_CONTR = 0X37; //喂狗操作 
+  74   3            delay_ms(100);
+  75   3        }
+  76   2        }
+  77   1      }
+*** WARNING C316 IN LINE 77 OF main.c: unterminated conditionals
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    314    ----
+   CODE SIZE        =    344    ----
    CONSTANT SIZE    =    132    ----
-   XDATA SIZE       =      8       2
+   XDATA SIZE       =      8       4
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

@@ -13,7 +13,10 @@ char wifi_send_buf[] = "#######";
 void main()
 {
 	unsigned int i;
+	int keynum;
+	int keytemp;
 	i = 0;
+	keynum = 0;
 	
 	WDT_CONTR = 0x17;
 	myKeyInit();
@@ -39,32 +42,36 @@ void main()
 	
 	/* 连接CONNECT */
 	MQTTConnect();
-	delay_ms(1000);
+	WDT_CONTR = 0X37;
+	delay_ms(100);
 	WDT_CONTR = 0X37;
 	
 	while(1)
 	{
-		delay_ms(1000);
-		getMyKeyData(wifi_send_buf);
-
-		printf("now push : ");
+		WDT_CONTR = 0X37; //喂狗操作 
+		delay_ms(100);
+		keytemp = getMyKeyData(wifi_send_buf);
+		if(keynum != keytemp){
+			keynum = keytemp;
+			printf("now push : ");
 			
-		for(i = 0 ; i < 7 ; i++)
-		{
-			if(wifi_send_buf[i] == '#')
+			for(i = 0 ; i < 7 ; i++)
 			{
-				OLED_ShowChar(i*8,4,'0' + i,12);
+				if(wifi_send_buf[i] == '#')
+				{
+					OLED_ShowChar(i*8,4,'0' + i,12);
+				}
+				else
+				{
+					OLED_ShowChar(i*8,4,' ',12);
+				}
 			}
-			else
-			{
-				OLED_ShowChar(i*8,4,' ',12);
-			}
-		}
-		WDT_CONTR = 0X37; //喂狗操作 
-		printf("\r\nwifisendbuff is %s",wifi_send_buf);
-		printf("\r\n");
-		MQTTPublish(wifi_send_buf);
-		WDT_CONTR = 0X37; //喂狗操作 
-		delay_ms(1000);
+			WDT_CONTR = 0X37; //喂狗操作 
+			printf("\r\nwifisendbuff is %s",wifi_send_buf);
+			printf("\r\n");
+			MQTTPublish(wifi_send_buf);
+			WDT_CONTR = 0X37; //喂狗操作 
+			delay_ms(100);
+	}
 	}
 }

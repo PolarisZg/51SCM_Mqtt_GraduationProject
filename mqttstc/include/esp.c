@@ -232,15 +232,15 @@ unsigned char MQTTConnect()
 	Uart1SendData(esp_race_buf,esp_race_count);
   //Uart4SendString("+++");
 	
-	delay_ms(2000);
+	delay_ms(200);
 	WDT_CONTR = 0X37; //喂狗操作 
-	delay_ms(2000);
+	delay_ms(200);
 	WDT_CONTR = 0X37; //喂狗操作 
-	delay_ms(2000);
+	delay_ms(200);
 	WDT_CONTR = 0X37; //喂狗操作 
-	delay_ms(2000);
+	delay_ms(200);
 	WDT_CONTR = 0X37; //喂狗操作 
-	delay_ms(2000);
+	delay_ms(200);
 	WDT_CONTR = 0X37; //喂狗操作 
 	return 1;
 }
@@ -264,19 +264,19 @@ unsigned char MQTTPublish(char *mqttdata)
 		if((esp_race_count - 2 >= 0 && esp_race_buf[esp_race_count - 2] == '>')||(esp_race_count - 1 >= 0 && esp_race_buf[esp_race_count - 1] == '>')||(esp_race_count >= 0 && esp_race_buf[esp_race_count] == '>'))
 			break;
 	}
-	delay_ms(1000);
+	delay_ms(100);
 	WDT_CONTR = 0X37; //喂狗操作 
 
 	for(num = 0;num < 48;num++)
 	{
 		Uart4SendData(MQTTPublishData[num]);
 	}
-	delay_ms(1000);
+	delay_ms(100);
 	WDT_CONTR = 0X37; //喂狗操作 
 
   Uart4SendString("+++");
 	WDT_CONTR = 0X37; //喂狗操作 
-	delay_ms(2000);
+	delay_ms(200);
 	return 1;
 }
 unsigned char MQTTPing()

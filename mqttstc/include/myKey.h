@@ -5,4 +5,4 @@
 
 
 void myKeyInit(void);
-void getMyKeyData(char *wifi_send_buf);
+int getMyKeyData(char *wifi_send_buf);

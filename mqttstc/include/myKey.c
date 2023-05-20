@@ -14,8 +14,9 @@ void myKeyInit(void)
 	GPIO_Inilize(GPIO_P5, &GPIO_InitStructure);	//初始化
 }
 
-void getMyKeyData(char *wifi_send_buf)
+int getMyKeyData(char *wifi_send_buf)
 {
+	int num = 0;
 	wifi_send_buf[0] = '#';
 	wifi_send_buf[1] = '#';
 	wifi_send_buf[2] = '#';
@@ -27,29 +28,38 @@ void getMyKeyData(char *wifi_send_buf)
 	if(KEY0)
 	{
 		wifi_send_buf[0] = '0';
+		num = num + 1 << 0;
 	}
 	if(KEY1)
 	{
 		wifi_send_buf[1] = '1';
+		num = num + 1 << 1;
 	}
 	if(KEY2)
 	{
 		wifi_send_buf[2] = '2';
+		num = num + 1 << 2;
 	}
 	if(KEY3)
 	{
 		wifi_send_buf[3] = '3';
+		num = num + 1 << 3;
 	}
 	if(KEY4)
 	{
 		wifi_send_buf[4] = '4';
+		num = num + 1 << 4;
 	}
 	if(KEY5)
 	{
 		wifi_send_buf[5] = '5';
+		num = num + 1 << 5;
 	}
 	if(KEY6)
 	{
 		wifi_send_buf[6] = '6';
+		num = num + 1 << 6;
 	}
+	
+	return num;
 }

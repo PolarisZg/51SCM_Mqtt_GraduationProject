@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <head>
     <meta charset="UTF-8">
     <title>aDemo</title>
@@ -8,15 +9,22 @@
 <body>
 <body>
 <div class="container">
-    <div class="options" id="topics">
-        <ul>
+    <div class="options">
 
-        </ul>
+
+
+        <div id="topics">
+            <ul>
+
+            </ul>
+        </div>
     </div>
-    <div>
-        <div id="contents_buttons"></div>
-        <br>
-        <div class="chat" id="contents">
+    <div class="chat">
+        <input type="text" id="intervalInput" placeholder="输入刷新时间间隔（秒）" />
+        <button id="startButton">开始倒计时</button>
+        <p id="countdownText"></p>
+
+        <div id="contents">
             <ul>
 
             </ul>
