@@ -1,6 +1,8 @@
 console.log("start");
 
 var temptopicname;
+var nowPageNum;
+var nowtopicName;
 
 $(function() {
     $.get("http://localhost:8080/topics", function(topics) {
@@ -23,7 +25,37 @@ $(function() {
                 var topicName = $(this).text();
                 console.log("111");
                 temptopicname = topicName;
-                loadContent(topicName);
+                loadContent(topicName,0,11);
+                nowPageNum = 0;
+                nowtopicName = topicName;
+
+                var top = document.getElementById("topbutton");
+                var buttom = document.getElementById("buttombutton");
+                // 清空div内的所有元素
+                top.innerHTML = '';
+                buttom.innerText = '';
+                // 创建四个按钮元素
+                var button1 = document.createElement("button");
+                var button2 = document.createElement("button");
+                var button3 = document.createElement("button");
+                var button4 = document.createElement("button");
+                // 添加按钮文本
+                button1.innerText = "上一页";
+                button2.innerText = "下一页";
+                button3.innerText = "上一页";
+                button4.innerText = "下一页";
+
+                // 绑定按钮点击事件的空函数
+                button1.onclick = loadPrePageContent;
+                button2.onclick = loadNextPageContent;
+                button3.onclick = loadPrePageContent;
+                button4.onclick = loadNextPageContent;
+                top.appendChild(button1);
+                top.appendChild(button2);
+                buttom.appendChild(button3);
+                buttom.appendChild(button4);
+
+                (document.getElementById("nowPageNum")).textContent="当前页码为 " + nowPageNum ;
             });
 
             topicList.append(item);
@@ -32,14 +64,17 @@ $(function() {
 });
 
 
-function loadContent(topicName){
+function loadContent(topicName,pageNum,pageLength){
+    pageNum = parseInt(pageNum,10);
+    pageLength = parseInt(pageLength,10);
+    console.log(pageLength)
     $.ajax({
         url: "http://localhost:8080/message",
         type: "GET",
         data:{
             topic: topicName,
-            page_num: 0,
-            page_length: 11
+            page_num: pageNum,
+            page_length: pageLength
         },
         success: function (messages){
             var contents = $("#contents ul");
@@ -84,7 +119,7 @@ function startCountdown() {
 
             if (countdown <= 0) {
                 countdown = interval;
-                loadContent(temptopicname);
+                loadContent(temptopicname,0,11);
             }
         }, 1000);
     }
@@ -92,3 +127,16 @@ function startCountdown() {
 
 document.getElementById("startButton").addEventListener("click", startCountdown);
 
+function loadNextPageContent() {
+    nowPageNum++;
+    loadContent(nowtopicName,nowPageNum,11);
+    (document.getElementById("nowPageNum")).textContent="当前页码为 " + nowPageNum ;
+}
+
+function loadPrePageContent() {
+    if(nowPageNum > 0){
+        nowPageNum--;
+        loadContent(nowtopicName,nowPageNum,11);
+        (document.getElementById("nowPageNum")).textContent="当前页码为 " + nowPageNum ;
+    }
+}
