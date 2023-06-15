@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="560px" preserveAspectRatio="none" style="width:204px;height:560px;background:#FFFFFF;" version="1.1" viewBox="0 0 204 560" width="204px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="44" x="79" y="6"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="24" x="89" y="28.0645">开始</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="92" x="55" y="60.584"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="72" x="65" y="82.6484">设置引脚功能</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="136" x="33" y="115.168"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="116" x="43" y="137.2324">配置UART控制寄存器</text><polygon fill="#FFFFFF" points="15,159.752,100,159.752,107,182.7666,187,182.7666,187,390.5186,15,390.5186,15,159.752" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="15" x2="107" y1="182.7666" y2="182.7666"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="79" x="19" y="175.8271">配置定时器4</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="152" x="25" y="196.7666"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="132" x="35" y="218.8311">计算并设置波特率重装值</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="128" x="37" y="266.3506"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="108" x="47" y="288.415">设置定时器工作模式</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="104" x="49" y="335.9346"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="84" x="59" y="357.999">启动定时器计时</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="100" x="51" y="410.5186"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="80" x="61" y="432.583">使能UART中断</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="116" x="43" y="465.1025"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="96" x="53" y="487.167">开启总中断允许位</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="44" x="79" y="519.6865"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="24" x="89" y="541.751">结束</text><line style="stroke:#000000;stroke-width:1.0;" x1="101" x2="101" y1="40.584" y2="60.584"/><polygon fill="#000000" points="97,50.584,101,60.584,105,50.584,101,54.584" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="101" x2="101" y1="95.168" y2="115.168"/><polygon fill="#000000" points="97,105.168,101,115.168,105,105.168,101,109.168" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="101" x2="101" y1="231.3506" y2="266.3506"/><polygon fill="#000000" points="97,256.3506,101,266.3506,105,256.3506,101,260.3506" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="101" x2="101" y1="300.9346" y2="335.9346"/><polygon fill="#000000" points="97,325.9346,101,335.9346,105,325.9346,101,329.9346" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="101" x2="101" y1="149.752" y2="196.7666"/><polygon fill="#000000" points="97,186.7666,101,196.7666,105,186.7666,101,190.7666" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="101" x2="101" y1="370.5186" y2="410.5186"/><polygon fill="#000000" points="97,400.5186,101,410.5186,105,400.5186,101,404.5186" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="101" x2="101" y1="445.1025" y2="465.1025"/><polygon fill="#000000" points="97,455.1025,101,465.1025,105,455.1025,101,459.1025" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="101" x2="101" y1="499.6865" y2="519.6865"/><polygon fill="#000000" points="97,509.6865,101,519.6865,105,509.6865,101,513.6865" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[8d562d0a318f0f051d74ea8a43e079ce]
+@startuml
+!theme plain
+:开始;
+:设置引脚功能;
+:配置UART控制寄存器;
+
+package 配置定时器4 {
+:计算并设置波特率重装值;
+:设置定时器工作模式;
+:启动定时器计时;
+}
+
+:使能UART中断;
+:开启总中断允许位;
+:结束;
+@enduml 
+
+@startuml
+
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor white
+    FontColor black
+    FontName Verdana
+    HyperLinkColor blue
+    LineColor black
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor black
+skinparam BackgroundColor white
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor black
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor white
+  BarColor black
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor black
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor black
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor white
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor black
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor black
+  FontName Verdana
+}
+skinparam Header {
+  FontColor black
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color blue
+}
+skinparam IconPackage {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPrivate {
+  Color black
+  BackgroundColor white
+}
+skinparam IconProtected {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPublic {
+  Color black
+  BackgroundColor white
+}
+skinparam Note {
+  FontColor black
+  FontName Verdana
+}
+skinparam Object {
+  BorderColor black
+}
+skinparam Package {
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeA {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeC {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeE {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeI {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeN {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam UseCaseStereoType {
+  FontColor black
+  FontName Verdana
+}
+:开始;
+:设置引脚功能;
+:配置UART控制寄存器;
+
+package 配置定时器4 {
+:计算并设置波特率重装值;
+:设置定时器工作模式;
+:启动定时器计时;
+}
+
+:使能UART中断;
+:开启总中断允许位;
+:结束;
+@enduml 
+
+PlantUML version 1.2022.7(Tue Aug 23 01:01:30 CST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: GBK
+Language: zh
+Country: CN
+--></g></svg>

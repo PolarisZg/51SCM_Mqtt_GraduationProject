@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="319px" preserveAspectRatio="none" style="width:280px;height:319px;background:#FFFFFF;" version="1.1" viewBox="0 0 280 319" width="280px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="44" x="118" y="6"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="24" x="128" y="28.0645">开始</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="198" x="41" y="60.584"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="178" x="51" y="82.6484">@Repository标记DAO层实现类</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="268" x="6" y="115.168"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="248" x="16" y="137.2324">@Component创建受框架管理的自定义class</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="180" x="50" y="169.752"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="160" x="60" y="191.8164">@Autowired向接口注入实例</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="128" x="76" y="224.3359"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="108" x="86" y="246.4004">调用实例中相关方法</text><rect fill="#FFFFFF" height="34.584" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="44" x="118" y="278.9199"/><text fill="#000000" font-family="Verdana" font-size="12" lengthAdjust="spacing" textLength="24" x="128" y="300.9844">结束</text><line style="stroke:#000000;stroke-width:1.0;" x1="140" x2="140" y1="40.584" y2="60.584"/><polygon fill="#000000" points="136,50.584,140,60.584,144,50.584,140,54.584" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="140" x2="140" y1="95.168" y2="115.168"/><polygon fill="#000000" points="136,105.168,140,115.168,144,105.168,140,109.168" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="140" x2="140" y1="149.752" y2="169.752"/><polygon fill="#000000" points="136,159.752,140,169.752,144,159.752,140,163.752" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="140" x2="140" y1="204.3359" y2="224.3359"/><polygon fill="#000000" points="136,214.3359,140,224.3359,144,214.3359,140,218.3359" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="140" x2="140" y1="258.9199" y2="278.9199"/><polygon fill="#000000" points="136,268.9199,140,278.9199,144,268.9199,140,272.9199" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[0aef44a9a20211e580acdd5129031981]
+@startuml 
+!theme plain
+:开始;
+:@Repository标记DAO层实现类;
+:@Component创建受框架管理的自定义class;
+:@Autowired向接口注入实例;
+:调用实例中相关方法;
+:结束;
+@enduml
+
+@startuml 
+
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor white
+    FontColor black
+    FontName Verdana
+    HyperLinkColor blue
+    LineColor black
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor black
+skinparam BackgroundColor white
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor black
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor white
+  BarColor black
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor black
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor black
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor white
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor black
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor black
+  FontName Verdana
+}
+skinparam Header {
+  FontColor black
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color blue
+}
+skinparam IconPackage {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPrivate {
+  Color black
+  BackgroundColor white
+}
+skinparam IconProtected {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPublic {
+  Color black
+  BackgroundColor white
+}
+skinparam Note {
+  FontColor black
+  FontName Verdana
+}
+skinparam Object {
+  BorderColor black
+}
+skinparam Package {
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeA {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeC {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeE {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeI {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeN {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam UseCaseStereoType {
+  FontColor black
+  FontName Verdana
+}
+:开始;
+:@Repository标记DAO层实现类;
+:@Component创建受框架管理的自定义class;
+:@Autowired向接口注入实例;
+:调用实例中相关方法;
+:结束;
+@enduml
+
+PlantUML version 1.2022.7(Tue Aug 23 01:01:30 CST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: GBK
+Language: zh
+Country: CN
+--></g></svg>

@@ -1,0 +1,21 @@
+@startuml
+!theme plain
+
+actor 物联网平台 as iot 
+participant AMQP客户端 as amqpcli
+database 数据库 as db 
+participant 业务服务器 as ss 
+participant 浏览器 as explore 
+actor 用户 as user 
+
+iot ->> amqpcli : 发送AMQP消息
+amqpcli ->> db : 存储消息内容
+
+user -> explore : 访问相应地址
+explore -> ss : 发送请求
+ss -> db : 访问数据库
+db --> ss : 返回数据
+ss --> explore : 返回数据
+explore --> user : 返回数据
+
+@enduml

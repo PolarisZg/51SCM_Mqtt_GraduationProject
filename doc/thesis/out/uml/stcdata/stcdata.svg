@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="512px" preserveAspectRatio="none" style="width:703px;height:512px;background:#FFFFFF;" version="1.1" viewBox="0 0 703 512" width="703px" zoomAndPan="magnify"><defs/><g><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="27" x2="27" y1="83.0146" y2="430.8071"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="129" x2="129" y1="83.0146" y2="430.8071"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="231" x2="231" y1="83.0146" y2="430.8071"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="336" x2="336" y1="83.0146" y2="430.8071"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="452" x2="452" y1="83.0146" y2="430.8071"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="563" x2="563" y1="83.0146" y2="430.8071"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="664" x2="664" y1="83.0146" y2="430.8071"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="28" x="10" y="80.0752">环境</text><ellipse cx="27" cy="14" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/><path d="M27,22 L27,49 M14,30 L40,30 M27,49 L14,64 M27,49 L40,64 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="28" x="10" y="443.8823">环境</text><ellipse cx="27" cy="455.8218" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/><path d="M27,463.8218 L27,490.8218 M14,471.8218 L40,471.8218 M27,490.8218 L14,505.8218 M27,490.8218 L40,505.8218 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><rect fill="#FFFFFF" height="31.0146" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="56" x="101" y="51"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="42" x="108" y="72.0752">传感器</text><rect fill="#FFFFFF" height="31.0146" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="56" x="101" y="429.8071"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="42" x="108" y="450.8823">传感器</text><rect fill="#FFFFFF" height="31.0146" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="56" x="203" y="51"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="42" x="210" y="72.0752">单片机</text><rect fill="#FFFFFF" height="31.0146" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="56" x="203" y="429.8071"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="42" x="210" y="450.8823">单片机</text><rect fill="#FFFFFF" height="31.0146" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="95" x="289" y="51"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="81" x="296" y="72.0752">OLED显示屏</text><rect fill="#FFFFFF" height="31.0146" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="95" x="289" y="429.8071"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="81" x="296" y="450.8823">OLED显示屏</text><rect fill="#FFFFFF" height="31.0146" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="77" x="414" y="51"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="63" x="421" y="72.0752">ESP8266</text><rect fill="#FFFFFF" height="31.0146" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="77" x="414" y="429.8071"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="63" x="421" y="450.8823">ESP8266</text><rect fill="#FFFFFF" height="31.0146" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="85" x="521" y="51"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="71" x="528" y="72.0752">WiFi路由器</text><rect fill="#FFFFFF" height="31.0146" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="85" x="521" y="429.8071"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="71" x="528" y="450.8823">WiFi路由器</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="70" x="626" y="80.0752">物联网平台</text><ellipse cx="664" cy="14" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/><path d="M664,22 L664,49 M651,30 L677,30 M664,49 L651,64 M664,49 L677,64 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="70" x="626" y="443.8823">物联网平台</text><ellipse cx="664" cy="455.8218" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/><path d="M664,463.8218 L664,490.8218 M651,471.8218 L677,471.8218 M664,490.8218 L651,505.8218 M664,490.8218 L677,505.8218 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="140,110.814,130,114.814,140,118.814,136,114.814" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="134" x2="230" y1="114.814" y2="114.814"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="52" x="146" y="110.0845">开始采样</text><polygon fill="#000000" points="38,140.6133,28,144.6133,38,148.6133,34,144.6133" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="32" x2="128" y1="144.6133" y2="144.6133"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="78" x="44" y="139.8838">采集环境数据</text><line style="stroke:#000000;stroke-width:1.0;" x1="127" x2="117" y1="174.4126" y2="170.4126"/><line style="stroke:#000000;stroke-width:1.0;" x1="127" x2="117" y1="174.4126" y2="178.4126"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="27" x2="128" y1="174.4126" y2="174.4126"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="52" x="34" y="169.6831">环境数据</text><line style="stroke:#000000;stroke-width:1.0;" x1="229" x2="219" y1="204.2119" y2="200.2119"/><line style="stroke:#000000;stroke-width:1.0;" x1="229" x2="219" y1="204.2119" y2="208.2119"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="129" x2="230" y1="204.2119" y2="204.2119"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="78" x="136" y="199.4824">返回环境数据</text><line style="stroke:#000000;stroke-width:1.0;" x1="334.5" x2="324.5" y1="234.0112" y2="230.0112"/><line style="stroke:#000000;stroke-width:1.0;" x1="334.5" x2="324.5" y1="234.0112" y2="238.0112"/><line style="stroke:#000000;stroke-width:1.0;" x1="231" x2="335.5" y1="234.0112" y2="234.0112"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="78" x="238" y="229.2817">发送环境数据</text><polygon fill="#000000" points="440.5,259.8105,450.5,263.8105,440.5,267.8105,444.5,263.8105" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="231" x2="446.5" y1="263.8105" y2="263.8105"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="174" x="238" y="259.0811">发送AT命令进入数据发送状态</text><line style="stroke:#000000;stroke-width:1.0;" x1="232" x2="242" y1="293.6099" y2="289.6099"/><line style="stroke:#000000;stroke-width:1.0;" x1="232" x2="242" y1="293.6099" y2="297.6099"/><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="231" x2="451.5" y1="293.6099" y2="293.6099"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="18" x="248" y="288.8804">OK</text><line style="stroke:#000000;stroke-width:1.0;" x1="450.5" x2="440.5" y1="323.4092" y2="319.4092"/><line style="stroke:#000000;stroke-width:1.0;" x1="450.5" x2="440.5" y1="323.4092" y2="327.4092"/><line style="stroke:#000000;stroke-width:1.0;" x1="231" x2="451.5" y1="323.4092" y2="323.4092"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="104" x="238" y="318.6797">发送MQTT数据报</text><line style="stroke:#000000;stroke-width:1.0;" x1="561.5" x2="551.5" y1="353.2085" y2="349.2085"/><line style="stroke:#000000;stroke-width:1.0;" x1="561.5" x2="551.5" y1="353.2085" y2="357.2085"/><line style="stroke:#000000;stroke-width:1.0;" x1="452.5" x2="562.5" y1="353.2085" y2="353.2085"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="52" x="459.5" y="348.479">发送数据</text><line style="stroke:#000000;stroke-width:1.0;" x1="662" x2="652" y1="383.0078" y2="379.0078"/><line style="stroke:#000000;stroke-width:1.0;" x1="662" x2="652" y1="383.0078" y2="387.0078"/><line style="stroke:#000000;stroke-width:1.0;" x1="563.5" x2="663" y1="383.0078" y2="383.0078"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="52" x="570.5" y="378.2783">发送数据</text><line style="stroke:#000000;stroke-width:1.0;" x1="450.5" x2="440.5" y1="412.8071" y2="408.8071"/><line style="stroke:#000000;stroke-width:1.0;" x1="450.5" x2="440.5" y1="412.8071" y2="416.8071"/><line style="stroke:#000000;stroke-width:1.0;" x1="231" x2="451.5" y1="412.8071" y2="412.8071"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="174" x="238" y="408.0776">发送AT命令退出数据发送状态</text><!--MD5=[44af3b7841304c3ddeca4246697e6be7]
+@startuml
+!theme plain
+actor 环境 as enov
+participant 传感器 as chuan
+participant 单片机 as stc 
+participant OLED显示屏 as OLED 
+participant ESP8266 as esp 
+participant WiFi路由器 as wifiap
+actor 物联网平台 as iot 
+
+stc -> chuan : 开始采样
+chuan -> enov : 采集环境数据
+enov - ->> chuan : 环境数据
+chuan - ->> stc : 返回环境数据
+stc ->> OLED : 发送环境数据
+stc -> esp : 发送AT命令进入数据发送状态
+esp - ->> stc : OK
+stc ->> esp : 发送MQTT数据报
+esp ->> wifiap : 发送数据
+wifiap ->> iot : 发送数据
+stc ->> esp : 发送AT命令退出数据发送状态
+
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor white
+    FontColor black
+    FontName Verdana
+    HyperLinkColor blue
+    LineColor black
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor black
+skinparam BackgroundColor white
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor black
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor white
+  BarColor black
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor black
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor black
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor white
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor black
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor black
+  FontName Verdana
+}
+skinparam Header {
+  FontColor black
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color blue
+}
+skinparam IconPackage {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPrivate {
+  Color black
+  BackgroundColor white
+}
+skinparam IconProtected {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPublic {
+  Color black
+  BackgroundColor white
+}
+skinparam Note {
+  FontColor black
+  FontName Verdana
+}
+skinparam Object {
+  BorderColor black
+}
+skinparam Package {
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeA {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeC {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeE {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeI {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeN {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam UseCaseStereoType {
+  FontColor black
+  FontName Verdana
+}
+actor 环境 as enov
+participant 传感器 as chuan
+participant 单片机 as stc 
+participant OLED显示屏 as OLED 
+participant ESP8266 as esp 
+participant WiFi路由器 as wifiap
+actor 物联网平台 as iot 
+
+stc -> chuan : 开始采样
+chuan -> enov : 采集环境数据
+enov - ->> chuan : 环境数据
+chuan - ->> stc : 返回环境数据
+stc ->> OLED : 发送环境数据
+stc -> esp : 发送AT命令进入数据发送状态
+esp - ->> stc : OK
+stc ->> esp : 发送MQTT数据报
+esp ->> wifiap : 发送数据
+wifiap ->> iot : 发送数据
+stc ->> esp : 发送AT命令退出数据发送状态
+
+@enduml
+
+PlantUML version 1.2022.7(Tue Aug 23 01:01:30 CST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: GBK
+Language: zh
+Country: CN
+--></g></svg>

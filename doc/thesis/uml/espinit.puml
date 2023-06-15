@@ -1,0 +1,18 @@
+@startuml
+!theme plain
+:开始;
+
+:初始化串口4(UART4);
+group 初始化ESP8266 
+
+:设置ESP8266工作于STA模式;
+:发送wifi名称和密码\n连接WiFi;
+
+:设置ESP8266为单链接模式;
+end group
+group 连接物联网平台
+:以TCP模式连接服务器;
+:发送 MQTT Connect 数据包;
+end group
+:结束;
+@enduml 

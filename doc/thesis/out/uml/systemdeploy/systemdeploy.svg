@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="857px" preserveAspectRatio="none" style="width:760px;height:857px;background:#FFFFFF;" version="1.1" viewBox="0 0 760 857" width="760px" zoomAndPan="magnify"><defs/><g><!--MD5=[e226396263426af847571298828753e1]
+cluster 感知层--><g id="cluster_感知层"><path d="M13.5,543.1191 L80.5,543.1191 A3.75,3.75 0 0 1 83,545.6191 L90,575.8564 L375,575.8564 A2.5,2.5 0 0 1 377.5,578.3564 L377.5,847.6191 A2.5,2.5 0 0 1 375,850.1191 L13.5,850.1191 A2.5,2.5 0 0 1 11,847.6191 L11,545.6191 A2.5,2.5 0 0 1 13.5,543.1191 " fill="#FFFFFF" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="11" x2="90" y1="575.8564" y2="575.8564"/><text fill="#000000" font-family="Verdana" font-size="22" font-weight="bold" lengthAdjust="spacing" textLength="66" x="15" y="567.2373">感知层</text></g><!--MD5=[32379a02070357d2522e3d3102548d53]
+cluster 展示层--><g id="cluster_展示层"><path d="M225.5,12.1191 L292.5,12.1191 A3.75,3.75 0 0 1 295,14.6191 L302,44.8564 L565.5,44.8564 A2.5,2.5 0 0 1 568,47.3564 L568,409.6191 A2.5,2.5 0 0 1 565.5,412.1191 L225.5,412.1191 A2.5,2.5 0 0 1 223,409.6191 L223,14.6191 A2.5,2.5 0 0 1 225.5,12.1191 " fill="#FFFFFF" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="223" x2="302" y1="44.8564" y2="44.8564"/><text fill="#000000" font-family="Verdana" font-size="22" font-weight="bold" lengthAdjust="spacing" textLength="66" x="227" y="36.2373">展示层</text></g><!--MD5=[fa33ae6c0b79ca8168e792a2e999507a]
+entity stc--><g id="elem_stc"><polygon fill="#FFFFFF" points="46.5,697.6191,56.5,687.6191,128.5,687.6191,128.5,724.6338,118.5,734.6338,46.5,734.6338,46.5,697.6191" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="118.5" x2="128.5" y1="697.6191" y2="687.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="46.5" x2="118.5" y1="697.6191" y2="697.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="118.5" x2="118.5" y1="697.6191" y2="734.6338"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="42" x="61.5" y="721.6943">单片机</text></g><!--MD5=[27b352ee28c52b62e6423603c0ab2b70]
+entity chuan--><g id="elem_chuan"><polygon fill="#FFFFFF" points="46.5,796.6191,56.5,786.6191,128.5,786.6191,128.5,823.6338,118.5,833.6338,46.5,833.6338,46.5,796.6191" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="118.5" x2="128.5" y1="796.6191" y2="786.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="46.5" x2="118.5" y1="796.6191" y2="796.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="118.5" x2="118.5" y1="796.6191" y2="833.6338"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="42" x="61.5" y="820.6943">传感器</text></g><!--MD5=[39c6691036394eb440948987107c3af9]
+entity OLED--><g id="elem_OLED"><polygon fill="#FFFFFF" points="27,598.6191,37,588.6191,148,588.6191,148,625.6338,138,635.6338,27,635.6338,27,598.6191" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="138" x2="148" y1="598.6191" y2="588.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="27" x2="138" y1="598.6191" y2="598.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="138" x2="138" y1="598.6191" y2="635.6338"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="81" x="42" y="622.6943">OLED显示屏</text></g><!--MD5=[5db1a0730a5a5bce6b7ccb23685510a8]
+entity esp--><g id="elem_esp"><polygon fill="#FFFFFF" points="258.5,652.6191,268.5,642.6191,361.5,642.6191,361.5,679.6338,351.5,689.6338,258.5,689.6338,258.5,652.6191" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="351.5" x2="361.5" y1="652.6191" y2="642.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="258.5" x2="351.5" y1="652.6191" y2="652.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="351.5" x2="351.5" y1="652.6191" y2="689.6338"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="63" x="273.5" y="676.6943">ESP8266</text></g><!--MD5=[4891d4f107946a3c6c7892fc0b4bd8d8]
+entity iot--><g id="elem_iot"><path d="M248.976,356.8057 C253.1741,351.919 256.9171,352.2565 260.5487,357.4556 C263.687,351.9178 268.1481,350.5289 272.2616,356.4596 C275.5533,350.1641 281.2312,349.349 285.4768,355.442 C289.09,348.0097 293.3363,348.481 298.8831,353.3314 C301.7668,347.2042 307.427,344.9303 312.0131,351.5822 C316.3964,344.983 321.7304,345.813 324.7431,352.8607 C329.2643,347.9228 335.2894,348.4427 337.3343,355.4672 C341.0254,349.2423 345.1087,350.4131 349.115,355.1278 C353.539,348.5053 358.4545,349.0691 362.0784,355.8989 C367.0562,351.4121 371.2606,350.285 374.5025,357.7095 C383.6616,360.7441 383.066,368.2278 376.7732,373.4863 C382.5549,378.8551 380.4278,386.0422 373.36,388.4873 C369.5087,394.2213 365.5409,394.6228 361.8703,388.3149 C358.2684,394.948 352.8119,395.4071 347.8693,389.8555 C343.584,395.7399 338.2775,395.3329 335.3835,388.4905 C332.711,395.081 327.9582,396.0148 323.4288,390.2936 C319.0777,396.9155 314.2291,396.8707 310.1379,390.0367 C306.4359,395.6455 300.8213,394.9931 298.4004,388.7663 C295.3521,393.7459 290.4163,393.9581 286.7846,389.4831 C281.7298,394.6592 277.3734,394.7783 273.4558,388.1943 C269.9742,395.2593 263.3487,394.645 259.7171,388.3485 C256.0588,393.0998 252.0134,393.8132 248.8117,387.8823 C240.5164,387.3181 237.7577,380.1823 241.6894,373.5444 C235.2637,364.7326 238.5498,358.2816 248.976,356.8057 " fill="#FFFFFF" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="112" x="254" y="377.6943">阿里云物联网平台</text></g><!--MD5=[33713b7f706bb1d2da6c35bceb907a55]
+entity amqpcli--><g id="elem_amqpcli"><polygon fill="#FFFFFF" points="249,148.6191,259,138.6191,371,138.6191,371,175.6338,361,185.6338,249,185.6338,249,148.6191" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="361" x2="371" y1="148.6191" y2="138.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="249" x2="361" y1="148.6191" y2="148.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="361" x2="361" y1="148.6191" y2="185.6338"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="82" x="264" y="172.6943">AMQP客户端</text></g><!--MD5=[7468467f3b6b392f1d176d828c753b77]
+entity db--><g id="elem_db"><path d="M279,67.1191 C279,57.1191 310,57.1191 310,57.1191 C310,57.1191 341,57.1191 341,67.1191 L341,93.1338 C341,103.1338 310,103.1338 310,103.1338 C310,103.1338 279,103.1338 279,93.1338 L279,67.1191 " fill="#FFFFFF" style="stroke:#000000;stroke-width:1.0;"/><path d="M279,67.1191 C279,77.1191 310,77.1191 310,77.1191 C310,77.1191 341,77.1191 341,67.1191 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="42" x="289" y="95.1943">数据库</text></g><!--MD5=[eae87c4b9fe10ddde0ad2c09dda6d929]
+entity sevicesever--><g id="elem_sevicesever"><polygon fill="#FFFFFF" points="442,67.6191,452,57.6191,552,57.6191,552,94.6338,542,104.6338,442,104.6338,442,67.6191" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="542" x2="552" y1="67.6191" y2="57.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="442" x2="542" y1="67.6191" y2="67.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="542" x2="542" y1="67.6191" y2="104.6338"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="70" x="457" y="91.6943">业务服务器</text></g><!--MD5=[83fc5fbbe440eb020d77338f2dc23065]
+entity wifiap--><g id="elem_wifiap"><polygon fill="#FFFFFF" points="269,489.6191,279,479.6191,351,479.6191,351,516.6338,341,526.6338,269,526.6338,269,489.6191" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="341" x2="351" y1="489.6191" y2="479.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="269" x2="341" y1="489.6191" y2="489.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="341" x2="341" y1="489.6191" y2="526.6338"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="42" x="284" y="513.6943">路由器</text></g><!--MD5=[a6df08d62429cc7e382e487fec3dc789]
+entity explore--><g id="elem_explore"><polygon fill="#FFFFFF" points="661,67.6191,671,57.6191,743,57.6191,743,94.6338,733,104.6338,661,104.6338,661,67.6191" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="733" x2="743" y1="67.6191" y2="57.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="661" x2="733" y1="67.6191" y2="67.6191"/><line style="stroke:#000000;stroke-width:1.0;" x1="733" x2="733" y1="67.6191" y2="104.6338"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="42" x="676" y="91.6943">浏览器</text></g><!--MD5=[d5e3da27925d01127ce8b9ced9069730]
+link stc to OLED--><g id="link_stc_OLED"><path d="M87.5,687.4091 C87.5,673.4491 87.5,655.6891 87.5,640.9291 " fill="none" id="stc-to-OLED" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="87.5,635.6391,83.5,644.6391,87.5,640.6391,91.5,644.6391,87.5,635.6391" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="19" x="66.5" y="667.189">IIC</text></g><!--MD5=[07908edcd937293f8ccbfa714412c222]
+link stc to esp--><g id="link_stc_esp"><path d="M128.69,702.9191 C163.52,695.8091 214.28,685.4491 253.08,677.5291 " fill="none" id="stc-to-esp" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="258.23,676.4791,248.6119,674.3596,253.331,677.4789,250.2116,682.198,258.23,676.4791" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="27" x="179" y="684.189">uart</text></g><!--MD5=[9bc39182c6fe54b93cb6dcb8d7b1b4e2]
+link chuan to stc--><g id="link_chuan_stc"><path d="M87.5,786.4091 C87.5,772.4491 87.5,754.6891 87.5,739.9291 " fill="none" id="chuan-to-stc" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="87.5,734.6391,83.5,743.6391,87.5,739.6391,91.5,743.6391,87.5,734.6391" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="32" x="60" y="766.189">GPIO</text></g><!--MD5=[5ddb1ef35fab2cbbf62f96443fcd6106]
+link esp to wifiap--><g id="link_esp_wifiap"><path d="M310,642.4191 C310,613.1991 310,563.5791 310,532.1191 " fill="none" id="esp-to-wifiap" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="310,526.8491,306,535.8491,310,531.8491,314,535.8491,310,526.8491" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="5" x="272" y="566.189"> </text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="5" x="272" y="581.9883"> </text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="22" x="261" y="597.7876">wifi</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="39" x="257.5" y="613.5869">MQTT</text></g><!--MD5=[a8a7c9116fc72dedfb551b570c54ed4b]
+link wifiap to iot--><g id="link_wifiap_iot"><path d="M310,479.3991 C310,457.3191 310,424.3891 310,400.8391 " fill="none" id="wifiap-to-iot" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="310,395.6691,306,404.6691,310,400.6691,314,404.6691,310,395.6691" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="5" x="280" y="427.189"> </text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="39" x="260.5" y="442.9883">MQTT</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="52" x="259" y="458.7876">上报数据</text></g><!--MD5=[75723131edc7999e63d43eae26f416b8]
+link iot to amqpcli--><g id="link_iot_amqpcli"><path d="M310,348.4391 C310,309.6591 310,232.7391 310,190.8891 " fill="none" id="iot-to-amqpcli" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="310,185.7091,306,194.7091,310,190.7091,314,194.7091,310,185.7091" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="5" x="240.5" y="217.189"> </text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="5" x="240.5" y="232.9883"> </text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="78" x="201.5" y="248.7876">数据实时流转</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="38" x="226.5" y="264.5869">AMQP</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="5" x="240.5" y="280.3862"> </text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="5" x="240.5" y="296.1855"> </text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="5" x="240.5" y="311.9849"> </text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="5" x="240.5" y="327.7842"> </text></g><!--MD5=[4fdca51c43a0f3a4e3089a7c8ca7ecf7]
+link amqpcli to db--><g id="link_amqpcli_db"><path d="M310,138.4191 C310,128.4591 310,118.5091 310,108.5491 " fill="none" id="amqpcli-to-db" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="310,103.3491,306,112.3491,310,108.3491,314,112.3491,310,103.3491" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[a8c953eed95c35811b11797d4df5672d]
+link db to sevicesever--><g id="link_db_sevicesever"><path d="M346.39,80.3091 C371.95,80.4491 407.07,80.6391 436.85,80.7991 " fill="none" id="db-sevicesever" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="441.96,80.8291,432.983,76.7778,436.9601,80.8006,432.9373,84.7776,441.96,80.8291" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="341.14,80.2791,350.1285,84.3048,346.14,80.2934,350.1514,76.3049,341.14,80.2791" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[ada604c502e487ac248878c183cdf7ba]
+link sevicesever to explore--><g id="link_sevicesever_explore"><path d="M557.41,81.1191 C588.74,81.1191 626.57,81.1191 655.54,81.1191 " fill="none" id="sevicesever-explore" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="660.84,81.1191,651.84,77.1191,655.84,81.1191,651.84,85.1191,660.84,81.1191" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="552.13,81.1191,561.13,85.1191,557.13,81.1191,561.13,77.1191,552.13,81.1191" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="45" x="585" y="78.189">业务api</text></g><!--MD5=[706363ab1a2cb836838ca2a7ba237f54]
+@startuml
+!theme plain
+left to right direction
+skinparam actorStyle awesome
+
+
+node 路由器 as wifiap
+
+node 浏览器 as explore
+
+package 感知层 {
+node 单片机 as stc
+node 传感器 as chuan 
+node OLED显示屏 as OLED 
+node ESP8266 as esp 
+}
+
+
+package 展示层 {
+cloud 阿里云物联网平台 as iot 
+node AMQP客户端 as amqpcli
+database 数据库 as db
+node 业务服务器 as sevicesever
+}
+
+stc -> OLED : IIC
+stc - -> esp : uart
+chuan -> stc : GPIO
+
+esp -> wifiap : \n\nwifi \n MQTT
+wifiap -> iot : \nMQTT \n 上报数据
+
+iot -> amqpcli : \n\n数据实时流转 \n AMQP\n\n\n\n
+amqpcli -> db
+db <- -> sevicesever
+sevicesever <- -> explore : 业务api
+
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor white
+    FontColor black
+    FontName Verdana
+    HyperLinkColor blue
+    LineColor black
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor black
+skinparam BackgroundColor white
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor black
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor white
+  BarColor black
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor black
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor black
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor white
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor black
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor black
+  FontName Verdana
+}
+skinparam Header {
+  FontColor black
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color blue
+}
+skinparam IconPackage {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPrivate {
+  Color black
+  BackgroundColor white
+}
+skinparam IconProtected {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPublic {
+  Color black
+  BackgroundColor white
+}
+skinparam Note {
+  FontColor black
+  FontName Verdana
+}
+skinparam Object {
+  BorderColor black
+}
+skinparam Package {
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeA {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeC {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeE {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeI {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeN {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam UseCaseStereoType {
+  FontColor black
+  FontName Verdana
+}
+left to right direction
+skinparam actorStyle awesome
+
+
+node 路由器 as wifiap
+
+node 浏览器 as explore
+
+package 感知层 {
+node 单片机 as stc
+node 传感器 as chuan 
+node OLED显示屏 as OLED 
+node ESP8266 as esp 
+}
+
+
+package 展示层 {
+cloud 阿里云物联网平台 as iot 
+node AMQP客户端 as amqpcli
+database 数据库 as db
+node 业务服务器 as sevicesever
+}
+
+stc -> OLED : IIC
+stc - -> esp : uart
+chuan -> stc : GPIO
+
+esp -> wifiap : \n\nwifi \n MQTT
+wifiap -> iot : \nMQTT \n 上报数据
+
+iot -> amqpcli : \n\n数据实时流转 \n AMQP\n\n\n\n
+amqpcli -> db
+db <- -> sevicesever
+sevicesever <- -> explore : 业务api
+
+@enduml
+
+PlantUML version 1.2022.7(Tue Aug 23 01:01:30 CST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: GBK
+Language: zh
+Country: CN
+--></g></svg>

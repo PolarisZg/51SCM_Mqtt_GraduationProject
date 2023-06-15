@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="785px" preserveAspectRatio="none" style="width:1117px;height:785px;background:#FFFFFF;" version="1.1" viewBox="0 0 1117 785" width="1117px" zoomAndPan="magnify"><defs/><g><!--MD5=[d556026720ac15c6b184b2bd90738ff0]
+class AmqpMessage--><g id="elem_AmqpMessage"><rect codeLine="2" fill="#FFFFFF" height="129.0732" id="AmqpMessage" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="186" x="565.5" y="649"/><ellipse cx="604.25" cy="663" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M599.9844,669 L599.9844,656.8281 L609.0156,656.8281 L609.0156,658.8906 L602.4375,658.8906 L602.4375,661.5938 L608.5469,661.5938 L608.5469,663.6406 L602.4375,663.6406 L602.4375,666.9531 L609.25,666.9531 L609.25,669 L599.9844,669 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="101" x="621.75" y="668.5679">AmqpMessage</text><line style="stroke:#000000;stroke-width:1.0;" x1="566.5" x2="750.5" y1="677" y2="677"/><rect fill="none" height="6" style="stroke:#000000;stroke-width:1.0;" width="6" x="573.5" y="688.0073"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="58" x="583.5" y="695.0752">id: Long</text><rect fill="none" height="6" style="stroke:#000000;stroke-width:1.0;" width="6" x="573.5" y="705.022"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="88" x="583.5" y="712.0898">topic: String</text><rect fill="none" height="6" style="stroke:#000000;stroke-width:1.0;" width="6" x="573.5" y="722.0366"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="130" x="583.5" y="729.1045">messageId: String</text><rect fill="none" height="6" style="stroke:#000000;stroke-width:1.0;" width="6" x="573.5" y="739.0513"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="108" x="583.5" y="746.1191">content: String</text><rect fill="none" height="6" style="stroke:#000000;stroke-width:1.0;" width="6" x="573.5" y="756.0659"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="162" x="583.5" y="763.1338">timestamp: Timestamp</text><line style="stroke:#000000;stroke-width:1.0;" x1="566.5" x2="750.5" y1="770.0732" y2="770.0732"/></g><!--MD5=[5d9d7f361cf9aacac4ee237afb90f58a]
+class JpaRepository--><g id="elem_JpaRepository"><rect codeLine="10" fill="#FFFFFF" height="78.0293" id="JpaRepository" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="148" x="649.5" y="356"/><ellipse cx="671.95" cy="370" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M671.1063,376 L671.1063,363.8281 L673.575,363.8281 L673.575,376 L671.1063,376 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="99" x="686.05" y="375.5679">JpaRepository</text><line style="stroke:#000000;stroke-width:1.0;" x1="650.5" x2="796.5" y1="384" y2="384"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="88" x="655.5" y="402.0752">// 其他方法...</text><line style="stroke:#000000;stroke-width:1.0;" x1="650.5" x2="796.5" y1="409.0146" y2="409.0146"/><ellipse cx="660.5" cy="423.022" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="124" x="667.5" y="427.0898">save(entity: T): T</text></g><!--MD5=[08e235c5380f5c22914c180967c44189]
+class SaveAmqpMessageRepository--><g id="elem_SaveAmqpMessageRepository"><rect codeLine="15" fill="#FFFFFF" height="61.0146" id="SaveAmqpMessageRepository" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="391" x="719" y="511"/><ellipse cx="805.25" cy="525" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M804.4063,531 L804.4063,518.8281 L806.875,518.8281 L806.875,531 L804.4063,531 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="211" x="822.75" y="530.5679">SaveAmqpMessageRepository</text><line style="stroke:#000000;stroke-width:1.0;" x1="720" x2="1109" y1="539" y2="539"/><line style="stroke:#000000;stroke-width:1.0;" x1="720" x2="1109" y1="547" y2="547"/><ellipse cx="730" cy="561.0073" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="367" x="737" y="565.0752">save(amqpMessage: AmqpMessage): AmqpMessage</text></g><!--MD5=[075d169e57b8209efed091987c0b17ab]
+class TopicAmqpMessageRepository--><g id="elem_TopicAmqpMessageRepository"><rect codeLine="22" fill="#FFFFFF" height="95.0439" id="TopicAmqpMessageRepository" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="560" x="123.5" y="494"/><ellipse cx="291.25" cy="508" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M290.4063,514 L290.4063,501.8281 L292.875,501.8281 L292.875,514 L290.4063,514 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="217" x="308.75" y="513.5679">TopicAmqpMessageRepository</text><line style="stroke:#000000;stroke-width:1.0;" x1="124.5" x2="682.5" y1="522" y2="522"/><line style="stroke:#000000;stroke-width:1.0;" x1="124.5" x2="682.5" y1="530" y2="530"/><ellipse cx="134.5" cy="544.0073" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="200" x="141.5" y="548.0752">findAllTopics(): List&lt;String&gt;</text><ellipse cx="134.5" cy="561.022" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="536" x="141.5" y="565.0898">findLatestByTopic(topic: String, pageable: Pageable): Page&lt;AmqpMessage&gt;</text><ellipse cx="134.5" cy="578.0366" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="340" x="141.5" y="582.1045">findByTopic(topic: String): List&lt;AmqpMessage&gt;</text></g><!--MD5=[c95b9c5c9bfe37ad00b0e2e5d71a540d]
+class AmqpClient--><g id="elem_AmqpClient"><rect codeLine="31" fill="#FFFFFF" height="95.0439" id="AmqpClient" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="233" x="798" y="201"/><ellipse cx="870.75" cy="215" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M873.5156,216.5313 L875.9063,217.2813 Q875.3594,219.2656 874.0859,220.2344 Q872.8125,221.2031 870.8438,221.2031 Q868.4219,221.2031 866.8672,219.5469 Q865.3125,217.8906 865.3125,215.0156 Q865.3125,211.9844 866.875,210.3047 Q868.4375,208.625 871,208.625 Q873.2344,208.625 874.625,209.9375 Q875.4531,210.7188 875.875,212.1875 L873.4375,212.7656 Q873.2188,211.8125 872.5391,211.2656 Q871.8594,210.7188 870.875,210.7188 Q869.5156,210.7188 868.6797,211.6953 Q867.8438,212.6719 867.8438,214.8438 Q867.8438,217.1406 868.6719,218.125 Q869.5,219.1094 870.8281,219.1094 Q871.8125,219.1094 872.5156,218.4844 Q873.2188,217.8594 873.5156,216.5313 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="80" x="888.25" y="220.5679">AmqpClient</text><line style="stroke:#000000;stroke-width:1.0;" x1="799" x2="1030" y1="229" y2="229"/><rect fill="none" height="6" style="stroke:#000000;stroke-width:1.0;" width="6" x="806" y="240.0073"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="209" x="816" y="247.0752">saveAmqpMessageRepository</text><line style="stroke:#000000;stroke-width:1.0;" x1="799" x2="1030" y1="254.0146" y2="254.0146"/><ellipse cx="809" cy="268.022" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="92" x="816" y="272.0898">AmqpClient()</text><rect fill="#FFFFFF" height="6" style="stroke:#000000;stroke-width:1.0;" width="6" x="806" y="282.0366"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="187" x="816" y="289.1045">processMessage(Message)</text></g><!--MD5=[75e2630aff90dda87efb57ae1fa01eca]
+class TopicsController--><g id="elem_TopicsController"><rect codeLine="39" fill="#FFFFFF" height="78.0293" id="TopicsController" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="235" x="12" y="37.5"/><ellipse cx="68.75" cy="51.5" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M71.5156,53.0313 L73.9063,53.7813 Q73.3594,55.7656 72.0859,56.7344 Q70.8125,57.7031 68.8438,57.7031 Q66.4219,57.7031 64.8672,56.0469 Q63.3125,54.3906 63.3125,51.5156 Q63.3125,48.4844 64.875,46.8047 Q66.4375,45.125 69,45.125 Q71.2344,45.125 72.625,46.4375 Q73.4531,47.2188 73.875,48.6875 L71.4375,49.2656 Q71.2188,48.3125 70.5391,47.7656 Q69.8594,47.2188 68.875,47.2188 Q67.5156,47.2188 66.6797,48.1953 Q65.8438,49.1719 65.8438,51.3438 Q65.8438,53.6406 66.6719,54.625 Q67.5,55.6094 68.8281,55.6094 Q69.8125,55.6094 70.5156,54.9844 Q71.2188,54.3594 71.5156,53.0313 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="114" x="86.25" y="57.0679">TopicsController</text><line style="stroke:#000000;stroke-width:1.0;" x1="13" x2="246" y1="65.5" y2="65.5"/><rect fill="none" height="6" style="stroke:#000000;stroke-width:1.0;" width="6" x="20" y="76.5073"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="211" x="30" y="83.5752">topicAmqpMessageRepository</text><line style="stroke:#000000;stroke-width:1.0;" x1="13" x2="246" y1="90.5146" y2="90.5146"/><ellipse cx="23" cy="104.522" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="202" x="30" y="108.5898">getAllTopics() : List&lt;String&gt;</text></g><!--MD5=[e4349f57744b867e8c798c67c0071f8d]
+class MessageOfTopicController--><g id="elem_MessageOfTopicController"><rect codeLine="46" fill="#FFFFFF" height="129.0732" id="MessageOfTopicController" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="372" x="282.5" y="12"/><ellipse cx="373.75" cy="26" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M376.5156,27.5313 L378.9063,28.2813 Q378.3594,30.2656 377.0859,31.2344 Q375.8125,32.2031 373.8438,32.2031 Q371.4219,32.2031 369.8672,30.5469 Q368.3125,28.8906 368.3125,26.0156 Q368.3125,22.9844 369.875,21.3047 Q371.4375,19.625 374,19.625 Q376.2344,19.625 377.625,20.9375 Q378.4531,21.7188 378.875,23.1875 L376.4375,23.7656 Q376.2188,22.8125 375.5391,22.2656 Q374.8594,21.7188 373.875,21.7188 Q372.5156,21.7188 371.6797,22.6953 Q370.8438,23.6719 370.8438,25.8438 Q370.8438,28.1406 371.6719,29.125 Q372.5,30.1094 373.8281,30.1094 Q374.8125,30.1094 375.5156,29.4844 Q376.2188,28.8594 376.5156,27.5313 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="182" x="391.25" y="31.5679">MessageOfTopicController</text><line style="stroke:#000000;stroke-width:1.0;" x1="283.5" x2="653.5" y1="40" y2="40"/><rect fill="none" height="6" style="stroke:#000000;stroke-width:1.0;" width="6" x="290.5" y="51.0073"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="211" x="300.5" y="58.0752">topicAmqpMessageRepository</text><line style="stroke:#000000;stroke-width:1.0;" x1="283.5" x2="653.5" y1="65.0146" y2="65.0146"/><ellipse cx="293.5" cy="104.5439" fill="#FFFFFF" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="97" x="300.5" y="83.0898">getMessages(</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="265" x="300.5" y="100.1045">@RequestParam("topic") String topic,</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="312" x="305.5" y="117.1191">@RequestParam("page_num") int pageNum,</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="343" x="305.5" y="134.1338">@RequestParam("page_length") int pageLength)</text></g><!--MD5=[b68e32ecd35d59b8d2d8c3e29992abc8]
+reverse link JpaRepository to SaveAmqpMessageRepository--><g id="link_JpaRepository_SaveAmqpMessageRepository"><path codeLine="19" d="M790.15,446.43 C818.59,467.94 850.79,492.3 875.3,510.84 " fill="none" id="JpaRepository-backto-SaveAmqpMessageRepository" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="785.66,451.8,773.93,434.15,794.11,440.64,785.66,451.8" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[3884b3a0284b6bdd959b2390e653dc99]
+link SaveAmqpMessageRepository to AmqpMessage--><g id="link_SaveAmqpMessageRepository_AmqpMessage"><path codeLine="20" d="M869.91,572.11 C838.46,592.99 795.12,621.77 755.87,647.84 " fill="none" id="SaveAmqpMessageRepository-to-AmqpMessage" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="751.6,650.68,761.3073,649.0159,755.7603,647.9065,756.8697,642.3595,751.6,650.68" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[78f0348e5d90ef95275a353092332165]
+reverse link JpaRepository to TopicAmqpMessageRepository--><g id="link_JpaRepository_TopicAmqpMessageRepository"><path codeLine="28" d="M631.05,437.75 C592.14,455.32 546.7,475.84 506.7,493.9 " fill="none" id="JpaRepository-backto-TopicAmqpMessageRepository" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="628.17,431.37,649.28,429.51,633.93,444.13,628.17,431.37" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[c18aed2cee4ce3634aeba3240f7dba80]
+link TopicAmqpMessageRepository to AmqpMessage--><g id="link_TopicAmqpMessageRepository_AmqpMessage"><path codeLine="29" d="M473.52,589.18 C500.5,607.17 531.82,628.05 560.94,647.46 " fill="none" id="TopicAmqpMessageRepository-to-AmqpMessage" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="565.22,650.31,559.9372,641.9978,561.0554,647.5431,555.5101,648.6613,565.22,650.31" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[cf525eb81f8baf9b0929b95eeba937c7]
+link AmqpClient to SaveAmqpMessageRepository--><g id="link_AmqpClient_SaveAmqpMessageRepository"><path codeLine="37" d="M914.5,296.25 C914.5,354.66 914.5,453.25 914.5,505.52 " fill="none" id="AmqpClient-to-SaveAmqpMessageRepository" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="914.5,510.74,918.5,501.74,914.5,505.74,910.5,501.74,914.5,510.74" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[bb56859a105fb0620e601369817699e3]
+link TopicsController to TopicAmqpMessageRepository--><g id="link_TopicsController_TopicAmqpMessageRepository"><path codeLine="44" d="M152.16,115.78 C201.32,198.85 317.8,395.68 373.21,489.31 " fill="none" id="TopicsController-to-TopicAmqpMessageRepository" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="375.8,493.69,374.6521,483.9083,373.2506,489.3888,367.7701,487.9873,375.8,493.69" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[07f1c6da3283b5f0f7adc45cb7f429aa]
+link MessageOfTopicController to TopicAmqpMessageRepository--><g id="link_MessageOfTopicController_TopicAmqpMessageRepository"><path codeLine="51" d="M459.53,141.39 C446.54,233.94 422.73,403.52 410.77,488.73 " fill="none" id="MessageOfTopicController-to-TopicAmqpMessageRepository" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="410.07,493.72,415.2655,485.353,410.7551,488.7672,407.3409,484.2568,410.07,493.72" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[4fad8b3ce37a2047b0b8849141708fcf]
+@startuml
+!theme plain
+entity AmqpMessage {
+    - id: Long
+    - topic: String
+    - messageId: String
+    - content: String
+    - timestamp: Timestamp
+}
+
+interface JpaRepository {
+    + save(entity: T): T
+    // 其他方法...
+}
+
+interface SaveAmqpMessageRepository {
+    + save(amqpMessage: AmqpMessage): AmqpMessage
+}
+
+JpaRepository <|.. SaveAmqpMessageRepository
+SaveAmqpMessageRepository - -> AmqpMessage
+
+interface TopicAmqpMessageRepository {
+    + findAllTopics(): List<String>
+    + findLatestByTopic(topic: String, pageable: Pageable): Page<AmqpMessage>
+    + findByTopic(topic: String): List<AmqpMessage>
+}
+
+JpaRepository <|.. TopicAmqpMessageRepository
+TopicAmqpMessageRepository - -> AmqpMessage
+
+class AmqpClient {
+    - saveAmqpMessageRepository
+    + AmqpClient()
+    - processMessage(Message)
+}
+
+AmqpClient - - -> SaveAmqpMessageRepository
+
+class TopicsController{
+    - topicAmqpMessageRepository
+    + getAllTopics() : List<String>
+}
+
+TopicsController - - - -> TopicAmqpMessageRepository
+
+class MessageOfTopicController{
+    - topicAmqpMessageRepository
+    + getMessages(\n@RequestParam("topic") String topic, \n @RequestParam("page_num") int pageNum, \n @RequestParam("page_length") int pageLength)
+}
+
+MessageOfTopicController - - - -> TopicAmqpMessageRepository
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor white
+    FontColor black
+    FontName Verdana
+    HyperLinkColor blue
+    LineColor black
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor black
+skinparam BackgroundColor white
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor black
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor white
+  BarColor black
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor black
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor black
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor white
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor black
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor black
+  FontName Verdana
+}
+skinparam Header {
+  FontColor black
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color blue
+}
+skinparam IconPackage {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPrivate {
+  Color black
+  BackgroundColor white
+}
+skinparam IconProtected {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPublic {
+  Color black
+  BackgroundColor white
+}
+skinparam Note {
+  FontColor black
+  FontName Verdana
+}
+skinparam Object {
+  BorderColor black
+}
+skinparam Package {
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeA {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeC {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeE {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeI {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeN {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam UseCaseStereoType {
+  FontColor black
+  FontName Verdana
+}
+entity AmqpMessage {
+    - id: Long
+    - topic: String
+    - messageId: String
+    - content: String
+    - timestamp: Timestamp
+}
+
+interface JpaRepository {
+    + save(entity: T): T
+    // 其他方法...
+}
+
+interface SaveAmqpMessageRepository {
+    + save(amqpMessage: AmqpMessage): AmqpMessage
+}
+
+JpaRepository <|.. SaveAmqpMessageRepository
+SaveAmqpMessageRepository - -> AmqpMessage
+
+interface TopicAmqpMessageRepository {
+    + findAllTopics(): List<String>
+    + findLatestByTopic(topic: String, pageable: Pageable): Page<AmqpMessage>
+    + findByTopic(topic: String): List<AmqpMessage>
+}
+
+JpaRepository <|.. TopicAmqpMessageRepository
+TopicAmqpMessageRepository - -> AmqpMessage
+
+class AmqpClient {
+    - saveAmqpMessageRepository
+    + AmqpClient()
+    - processMessage(Message)
+}
+
+AmqpClient - - -> SaveAmqpMessageRepository
+
+class TopicsController{
+    - topicAmqpMessageRepository
+    + getAllTopics() : List<String>
+}
+
+TopicsController - - - -> TopicAmqpMessageRepository
+
+class MessageOfTopicController{
+    - topicAmqpMessageRepository
+    + getMessages(\n@RequestParam("topic") String topic, \n @RequestParam("page_num") int pageNum, \n @RequestParam("page_length") int pageLength)
+}
+
+MessageOfTopicController - - - -> TopicAmqpMessageRepository
+@enduml
+
+PlantUML version 1.2022.7(Tue Aug 23 01:01:30 CST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: GBK
+Language: zh
+Country: CN
+--></g></svg>

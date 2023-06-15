@@ -1,0 +1,18 @@
+@startuml
+!theme plain
+
+package ESP8266初始化{
+usecase 设置工作模式 as cwmode
+usecase 连接WiFi as cwjap
+usecase 设置连接模式 as cipmux
+usecase 建立TCP连接 as cipstart
+}
+package ESP8266发送数据{
+usecase 发送数据 as cipsend
+usecase 建立MQTT连接 as mqttcon
+usecase 发送MQTTT数据报 as mqttpub
+}
+cipsend <-- mqttcon
+cipsend <-- mqttpub
+
+@enduml
