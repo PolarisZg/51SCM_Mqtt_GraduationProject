@@ -131,9 +131,9 @@
 
 * 注册阿里云iot平台账户，按照其说明文档添加产品及设备，在设备界面获取MQTT连接参数
 
-![新建的阿里云iot产品界面](\doc\thesis\img\iotproduct.jpg)
+![新建的阿里云iot产品界面](img\iotproduct.jpg)
 
-![新建的阿里云iot设备界面](doc\thesis\img\iotdevice.jpg)
+![新建的阿里云iot设备界面](img\iotdevice.jpg)
 
 * 使用visual studio打开 `MQTTClient` 文件夹，使用获得的MQTT连接参数修改`main.c` 的阿里云相关配置,仅需要修改 `三元组` 、 `加密方式`  、 `密码`
 
@@ -173,7 +173,7 @@ int MQTTSendData(const char* data, unsigned int length)
    
    * 运行时可能会被杀毒软件报错，请关闭杀毒软件，或将相应的文件转移至信任区
 
-![MQTTClient运行后的结果](doc\thesis\img\MQTTClient.jpg)
+![MQTTClient运行后的结果](img\MQTTClient.jpg)
 
 * 使用 `Keil` 打开 `mqttstc` 项目，修改 `main.c` 文件中 `初始化esp8266` 的相关参数，第一个为WiFi的名称，第二个为WiFi密码，第三个为上方获取的阿里云iot的IP地址，端口号无需修改
 
@@ -203,7 +203,7 @@ int MQTTSendData(const char* data, unsigned int length)
 	
 * 启动 `AmqpSpringApplication` ，正常情况下可在控制台查看到相应的日志输出
 
-![日志输出](doc\thesis\img\amqpspringlog.jpg)
+![日志输出](img\amqpspringlog.jpg)
 
 * 点击进入 `anewdemo.html` 页面，启动该页面，可访问浏览器前端
 
