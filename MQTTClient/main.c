@@ -63,7 +63,7 @@ int MQTTSendData(const char* data, unsigned int length)
 	while (length--)
 	{
 		temp = *data++;
-		printf("%c", temp);
+		printf("0x%02X ,", temp);
 	}
 
 	return 1;

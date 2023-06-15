@@ -1,5 +1,6 @@
 @startuml
-start
+!theme plain
+:开始;
 
 :初始化串口4(UART4);
 group 初始化ESP8266 
@@ -13,5 +14,5 @@ group 连接物联网平台
 :以TCP模式连接服务器;
 :发送 MQTT Connect 数据包;
 end group
-end 
+:结束;
 @enduml 

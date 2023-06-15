@@ -1,0 +1,53 @@
+@startuml
+!theme plain
+entity AmqpMessage {
+    - id: Long
+    - topic: String
+    - messageId: String
+    - content: String
+    - timestamp: Timestamp
+}
+
+interface JpaRepository {
+    + save(entity: T): T
+    // 其他方法...
+}
+
+interface SaveAmqpMessageRepository {
+    + save(amqpMessage: AmqpMessage): AmqpMessage
+}
+
+JpaRepository <|.. SaveAmqpMessageRepository
+SaveAmqpMessageRepository --> AmqpMessage
+
+interface TopicAmqpMessageRepository {
+    + findAllTopics(): List<String>
+    + findLatestByTopic(topic: String, pageable: Pageable): Page<AmqpMessage>
+    + findByTopic(topic: String): List<AmqpMessage>
+}
+
+JpaRepository <|.. TopicAmqpMessageRepository
+TopicAmqpMessageRepository --> AmqpMessage
+
+class AmqpClient {
+    - saveAmqpMessageRepository
+    + AmqpClient()
+    - processMessage(Message)
+}
+
+AmqpClient ---> SaveAmqpMessageRepository
+
+class TopicsController{
+    - topicAmqpMessageRepository
+    + getAllTopics() : List<String>
+}
+
+TopicsController ----> TopicAmqpMessageRepository
+
+class MessageOfTopicController{
+    - topicAmqpMessageRepository
+    + getMessages(\n@RequestParam("topic") String topic, \n @RequestParam("page_num") int pageNum, \n @RequestParam("page_length") int pageLength)
+}
+
+MessageOfTopicController ----> TopicAmqpMessageRepository
+@enduml

@@ -1,144 +1,184 @@
-# 远程数据采集系统
 
-<!---------------------------------->
----
-## 主要技术介绍硬件+协议
+# 南京大学学位论文排版工具
 
-### MQTT
+Life is short, you need Markdown.
 
-背景，特性，原理（每个字节的意义）
+本项目提供了一个基于 [Pandoc](https://pandoc.org/) 导出 docx 南京大学学位论文的 Lua Filter 。该模板想必可以满足硕士学位论文的需求，帮助没有 LaTeX 基础且没有强迫症的南京大学同学们极其方便地排版出够用的学位论文。
 
-### AMQP
 
-背景，特性，传输流
-## 环境数据感知层开发
+## 功能特色
 
-### 硬件介绍
+- 可排版硕士、学士学位论文（学士论文封面、摘要暂未直接生成）；
+- 相比 LaTeX 简单多了，兼顾文本文件的版本控制和 Microsoft Word 的编辑功能；
+- 导出的 docx 文件用书签和域来引用，插入图、表、公式导致的编号变化可以直接更新；
+- 导出的 docx 文件可以给不使用 LaTeX 的导师修改；
+- 功能不足的地方可以导出 docx 文件后用 Microsoft Word 补足。
 
-#### IAP15W4K58S4
 
-<!--介绍 + 参数 + 开发方案(所需语言/SDK/配置方法等) -->
-<!--对于单片机，应该介绍的有：UART 看门狗，计时器 -->
+## 参考的格式要求
 
-#### ESP8266
-<!-- 介绍加具体参数 -->
-<!-- 这里纠结的点在于，如果我把初始化，发送SSID和Password，Station，单链接，透传模式都说了，下面的软件设计就不知道该说什么-->
+- [博士（硕士）学位论文编写格式规定（试行）](https://grawww.nju.edu.cn/_upload/article/files/7e/52/1266fc144fd6b14fc32266b912ec/a28cccb8-a68c-4153-b585-25910331056e.doc)
+  - GB7713 科学技术报告、学位论文和学术论文的编写格式
+  - GB7714 文后参考文献著录规则
+- [2020届本科毕业论文工作手册](https://jw.nju.edu.cn/_upload/article/files/a2/17/e4e5fb414ddf8d64accea8e63e4a/df778a5f-c871-488f-8ba8-de6a0a02e700.rar)
+- [2021届本科毕业论文工作手册](https://jw.nju.edu.cn/_upload/article/files/8c/b2/1e82afc4461da5b6c5edbb48d8a5/741692c3-ccf6-43ae-8413-9df21732f8dd.rar)
+- [2022届本科毕业论文工作手册](https://jw.nju.edu.cn/_upload/article/files/44/7d/c7eae73b4fe58eff8acb02d9c1aa/d267ac9d-6a4d-4b47-adb8-1aacc1751dd3.rar)
 
-#### 其他辅助硬件
+因学校会清理过期网页，但未清理过期文件，所以引用了下载文件的链接。
 
-<!-- OLED 按键 电源 -->
+比较后发现2020届和2021届的撰写规范没有区别。
 
-### 硬件接口连线
+比较后发现2021届和2022届的撰写规范没有区别，但是2022届多了一个毕业论文 Word 模板，里面多了亿点点小细节，今年来不及支持了。好在模板仅供参考，不严格遵守似乎问题不大。另外需要吐槽的是，2022届手册十分混乱，文件大量重复，需要仔细揣摩手册整理人员的心理，难以阅读理解。
 
-<!-- 主要应该放电路图和接口连接表，但是我不知道这里应该说些什么-->
 
-### 软件设计
+## 简单开始
 
-#### 软件总体结构
-<!-- 代码的总体结构图（模块构成方案，文件结构层次），流程图（大体上的，详细的分列在下面不同的模块中，这里对看门狗的画法有待商榷）-->
-在环境数据感知层需要完成一系列对于硬件的控制及数据的传输，需要一些配套的模块去实现这些功能。为在开发过程中实时的获得代码运行情况，需要实现单片机与上位机之间的串口通信功能；为通过WiFi将数据上传至物联网平台，需完成对ESP8266的配置功能；为获取传感器数据，需完成对传感器数据的获取与解析功能；为便于在现场查看传感器数据，需完成对OLED的控制功能。同时，在这些功能实现的过程中，考虑到单片机的性能问题及外围硬件的速度问题，需要实现延时功能去保证代码正常运行；考虑到异常情况下单片机宕机问题，需要看门狗功能保证宕机后硬件能够重启恢复至正常运行。程序运行时流程图如图所示：
-<!--这里放置代码的流程图 -->
+在 [Releases · jgm/pandoc](https://github.com/jgm/pandoc/releases) 下载 pandoc-2.11.2 或以上版本的二进制文件。后缀为 -x86_64.zip 的是 Windows 平台的免安装版本，其余同理。下载后解压。
 
-#### 延时方案
+用 `git clone` 或直接下载本项目最新的工程文件，解压到目录 nju-thesis-markdown 。
 
-##### 循环延时
+Windows 下打开 powershell 或 cmd 并进入目录 nju-thesis-markdown/thesis ，运行：
 
-<!-- 两段，软件延时（for循环）和硬件延时（计时器，主要说一下看门狗的作用）-->
-为保证代码的正常运行，适应硬件的速度以及串口消息发送速率，需要引入延时函数对代码的运行速度进行控制。考量到在延时的过程中需要让代码暂停运行，因此利用for循环占用CPU即可。为便于使用，延时函数需要的控制参数为延时的毫秒数，
+```
+/path/to/pandoc.exe --lua-filter ../src/thesis.lua --citeproc sample.md --reference-doc nju-thesis-reference.docx --output sample.docx
+```
 
-##### 看门狗
+如需要导出 docx 文件再自行添加参考文献，则运行：
 
-原理（具体到每一位的作用）+ 流程图
+```
+/path/to/pandoc.exe --lua-filter ../src/thesis.lua sample.md --reference-doc nju-thesis-reference.docx --output sample.docx
+```
 
-#### 调试方案
+### 注意事项
 
-串口打印数据调试，这里写调试的意义，引出来利用串口进行调试
+本项目仅使用了 pandoc-2.11.2 测试，旧版本可能会有兼容性问题，小于 2.10 的版本一定会有兼容性问题。
 
-##### 串口初始化
+因 pandoc 更新频率较高，如果最新版本的 pandoc 报错，请提 [issue](https://github.com/centixkadon/nju-thesis-markdown/issues) 。
 
-对于代码的介绍，按照以下规则来写：原理（所需的软件或者硬件，比如说计时器；输入的参数以及输出结果的格式和意义） + 流程（配图）+ 输出的结果
+本项目输出的 docx 文件仅使用 Microsoft Word 2019 测试了打开、更新域、生成 pdf 文件等功能，未使用 WPS Office 或 LibreOffice 测试。对版本较旧的 Microsoft Word 大概率也是可以兼容的（ 2013 及以上）。
 
-##### 串口发送数据
+本项目仅在 Windows 平台测试……但是理论上跨平台兼容性由 pandoc 提供，应该没有问题。
 
-和上面一样，介绍锁写的几个模块 + 流程图
 
-##### 预期结果
+## 一些技巧
 
-包括如何使用本小节中的这些模块，如何在电脑端进行配置，如何算是成功，外加一个成功的截图
+### 排版更改
 
-#### 传感器数据采集
+导出 docx 文件的字体样式、布局排版、小节编号等等都可以在 thesis/nju-thesis-reference.docx 中更改。打开该文件，修改并更新对应的样式，然后保存即可。需要注意的是，由于项目不够完善，直接修改页眉页脚可能会导致最终导出 docx 文件出错。
 
-这个和上面的不同，这个就一节，反正就是个采集按键信息
+如有需求，可以在 src/nju-thesis-reference 中更改排版（此处需要学习 OOXML ），然后将该文件夹内的内容压缩成 zip 压缩文件 thesis/nju-thesis-reference.docx （注意不能包括 src/nju-thesis-reference 文件夹本身）。南大同学也可以直接提 [issue](https://github.com/centixkadon/nju-thesis-markdown/issues) 。
 
-原理 + 流程图
+### 公式输入
 
-#### ESP8266
+Pandoc 直接支持 TeX 格式的公式，示例见 [Pandoc - Math Demos](https://pandoc.org/demo/math.text) 。如对 TeX 不熟悉，可在 Microsoft Word 中用自带的公式编辑器（快捷键 `Alt+=`）输入，保存成 math.docx 后运行以下命令查看 Markdown 表示方法：
 
-##### 初始化
+```
+/path/to/pandoc.exe math.docx --to markdown
+```
 
-##### 模式控制 
+### 从 Word 中同步更改
 
-##### 数据发送
-这里不仅要说CIPSEND，也要说根据MQTT协议对数据的包装
+导师可能更愿意使用 Word 修改论文，这时候建议使用 Microsoft Word 的 审阅 → 比较 功能，比较修改前后文档的差异，然后手动更改到 Markdown 。
 
-##### 预期结果
+如果导师使用不同平台的 Microsoft Word ，甚至使用不同的 Office 软件，那我只能祝你好运了。
 
-#### OLED
+### 其他功能
 
-##### 配置
+从 thesis/sample.md 开始使用吧。包括图、表、公式、对图表式编号的引用、书签和域、引用文章和参考文献。
 
-##### 预期结果
 
-### 小结
+## 进阶使用
 
-#### 烧录
+首先，心中默念三遍：“ Pandoc 很厉害，自己想实现的功能都能基于它实现。”
 
-#### 预期运行结果
+### Pandoc
 
-## 用户层开发
+Pandoc 的使用可以参考 [Pandoc - Pandoc User's Guide](https://pandoc.org/MANUAL.html) 。之前使用的 Pandoc 命令行参数分别是以下作用：
 
-### 总体架构方案
-这里包括总体的架构图，数据流向图，但我没想好怎么介绍
-
-### AMQP客户端
-对于AMQP客户端的选择与介绍放在这里
-
-#### 第三方库配置
-
-#### 代码结构
-
-#### 预期结果
-
-### Spring boot及MySQL数据库
-对Spring和MySQL的介绍放在这里
-
-#### 总体结构
-
-#### xml文件配置
-
-#### 与数据库的连接
-详细方面的介绍要包括，注解，CURD，Page，自定义SQL语句，auto主键，时间戳
-
-#### AMQP客户端的引入
-
-#### 界面设计
-
-#### 预期结果
-
-### 小结
-
-## 引用和致谢
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+| 命令行参数          | 作用                                         |
+|:--------------------|:---------------------------------------------|
+| --lua-filter xxx    | 指定 Lua Filter 文件                         |
+| --filter xxx        | 指定 Filter 程序                             |
+|                     | 注意： --lua-filter 和 --filter 顺序依次执行 |
+| --reference-doc xxx | 指定格式文件                                 |
+| --bibliography xxx  | 指定参考文献文件                             |
+
+更多命令行参数及其用法，参见 [Pandoc - Pandoc User's Guide](https://pandoc.org/MANUAL.html) 中 [Options](https://pandoc.org/MANUAL.html#options) 一章。
+
+### Pandoc's Markdown
+
+编写论文所需的 Markdown 在原有的语法基础上添加了一些 Pandoc 特有的语法，可以参考 [Pandoc - Pandoc User's Guide](https://pandoc.org/MANUAL.html) 中 [Pandoc's Markdown](https://pandoc.org/MANUAL.html#pandocs-markdown) 一章。
+
+相关示例见 [Pandoc - Demos](https://pandoc.org/demos.html)
+
+### Lua Filter
+
+如果在 Pandoc's Markdown 的基础上想减少一些重复劳动，可以参考 [Pandoc - Pandoc Lua Filters](https://pandoc.org/lua-filters.html) 修改或重新创建 Lua Filter 。比如，章节自动编号、字数统计等功能可以通过 Lua Filter 实现。
+
+有关 [Lua](http://www.lua.org/home.html) 语法，可以参考 [Programming in Lua](http://www.lua.org/pil/) 或 [Lua: reference manuals](https://www.lua.org/manual/) 。
+
+如果不想学习 Lua ，可以参考 [Pandoc - Pandoc filters](https://pandoc.org/filters.html) 用其它语言创建 Filter 。
+
+### OOXML
+
+OOXML (Office Open XML) 是 Microsoft 开发的、基于 XML (Extensible Markup Language) 的 zip 压缩文件格式。将 docx 文件后缀名改成 zip 并解压，就能得到里面的 XML 文件。 docx 文件的强大相信经常使用 Microsoft Word 的同学们可以从 bug 中体会到。这些 bug 往往仅仅是为了更方便的功能存储了冗余信息、图形用户界面和 XML 信息交互出错、甚至是压缩出了问题等等鸡毛蒜皮的问题导致的（~~我猜的~~）。那么怎样才能既使用这些强大的功能，又不出奇奇怪怪的问题呢？当然是直接编写 XML 文件再转换成 docx 啦。但是 OOXML 实在是难，不是人学的。这也不是问题， XML 是一门标记语言，自然可以由其它标记语言转换得到啦。 Markdown 就是这门简单得几乎不能再简单的标记语言。
+
+Markdown 作为一门从命名就可以看出与 Markup Language 针锋相对的标记语言，因为简单方便，所以表达的信息是有极限的。好在 Pandoc's Markdown 提供了 raw_attribute 的扩展，可以在 Markdown 中写目标格式的标记语言。比如章节前自动换页、域等功能就是通过 Lua Filter 和 OOXML 实现的。
+
+有关 OOXML 语法，官方的网站没有找到。推荐 [Office Open XML - What is OOXML?](http://officeopenxml.com/) ，虽然看起来不官方，但是非常全面详细（而且旧，说明兼容性好呀🤣），目前想找的都能找到。
+
+如果需要从头开始修改 reference.docx ，可以将 pandoc 默认使用的 reference.docx 输出到 /path/to/reference.docx ：
+
+```
+/path/to/pandoc.exe --output /path/to/reference.docx --print-default-data-file reference.docx
+```
+
+再当成 zip 文件解压就可以得到包含 OOXML 文件的文件夹啦。
+
+## 其他
+
+### 项目进展
+
+- [x] 前置部分
+  - [x] 封面（硕士）
+    - [x] 图片
+    - [x] 标题（研究生毕业论文）
+    - [x] 论文信息
+  - [x] 中英文摘要页（硕士）
+    - [x] 摘要标题
+    - [x] 摘要信息
+    - [x] 摘要
+    - [x] 关键词
+  - [x] 目录、目次页
+  - [x] 插图和附表清单（使用表格实现）
+  - [x] 注释说明汇集表（使用表格实现）
+  - [x] 规范要求
+    - [x] 前置部分页码
+- [x] 主体部分
+  - [x] 序号
+  - [x] 图、表、公式
+    - [x] 编号
+    - [x] 图、表、公式引用
+  - [x] 参考文献
+    - [x] 规范格式
+    - [x] 导出 docx 后用其它文献管理软件（如 Zotero 、 EndNote ）
+  - [x] 科研成果
+  - [x] 致谢
+  - [x] 规范要求
+    - [x] 字体、字号
+    - [x] 页眉
+    - [x] 正文页码
+- [x] 附录部分（非必要）
+  - [x] 附录页码（接正文页码）
+- [ ] 结尾部分（非必要）
+- [x] 杂项
+  - [x] 域支持
+  - [x] 中文之间的换行不添加空格（中英文之间的换行也不添加，英文之间的换行添加）
+  - [x] 字数统计
+
+### 文件来源
+
+| 文件                                       | 来源                                                                                                                                                   |
+|:-------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| thesis/csl/chinese-gb7714-2005-numeric.csl | [Zotero Style Repository](https://www.zotero.org/styles), [Github - citation-style-language/styles](https://github.com/citation-style-language/styles) |
+| thesis/nju.png                             | [视觉形象规范化标准](https://www.nju.edu.cn/3647/list.htm)                                                                                             |

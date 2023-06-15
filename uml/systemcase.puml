@@ -1,0 +1,37 @@
+@startuml 
+!theme plain
+left to right direction
+skinparam actorStyle awesome
+actor :用户: as user
+
+
+
+
+
+package 服务器 {
+    usecase (浏览器数据显示) as exploredata
+    usecase (外部访问接口) as api 
+}
+
+package 物联网平台 {
+    usecase (设备管理) as devicemanage
+    usecase (产品管理) as productmanage
+    usecase (其他物联网平台功能) as otheriot
+}
+
+package 设备 {
+    usecase (OLED数据展示) as OLEDdata
+    usecase (环境数据获取) as envodata
+    usecase (WiFi连接) as wificonnect
+    usecase (自动重启) as autorestart
+}
+
+user --> exploredata
+user --> OLEDdata
+
+user --> devicemanage
+user --> productmanage
+user --> api
+user --> otheriot
+
+@enduml

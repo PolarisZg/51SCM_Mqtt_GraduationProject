@@ -1,0 +1,10 @@
+@startuml
+!theme plain
+:开始;
+:传入字符串;
+while (检测字符串结束标志) is (是)
+    :调用调用串口发送字符数据函数;
+endwhile
+:结束;
+
+@enduml·
