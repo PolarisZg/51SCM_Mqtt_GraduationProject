@@ -131,7 +131,7 @@
 
 * 注册阿里云iot平台账户，按照其说明文档添加产品及设备，在设备界面获取MQTT连接参数
 
-![新建的阿里云iot产品界面](img\iotproduct.jpg)
+![新建的阿里云iot产品界面](img/iotproduct.jpg)
 
 ![新建的阿里云iot设备界面](img\iotdevice.jpg)
 
