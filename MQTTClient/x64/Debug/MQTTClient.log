@@ -1,9 +1,1 @@
-﻿  main.c
-D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(83,20): warning C4013: 'MQTTConnect' undefined; assuming extern returning int
-D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(110,20): warning C4013: 'MQTTPublish' undefined; assuming extern returning int
-D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(153,25): warning C4013: 'SetMQTTSendDataToServer' undefined; assuming extern returning int
-D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(163,17): warning C4013: 'strDataPublish' undefined; assuming extern returning int
-D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(169,33): warning C4013: 'MQTTPing' undefined; assuming extern returning int
-D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(172,47): warning C4013: 'MQTTDisconnect' undefined; assuming extern returning int
-D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\main.c(189,18): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  MQTTClient.vcxproj -> D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\x64\Debug\MQTTClient.exe
+﻿  MQTTClient.vcxproj -> D:\Learn\GraduationProject\51SCM_Mqtt_GraduationProject\MQTTClient\x64\Debug\MQTTClient.exe
