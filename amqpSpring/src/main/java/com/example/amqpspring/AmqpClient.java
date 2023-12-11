@@ -39,10 +39,10 @@ public class AmqpClient {
     SaveAmqpMessageRepository saveAmqpMessageRepository;
 
     private final Logger logger = LoggerFactory.getLogger(AmqpClient.class);
-    private String accessKey = "LTAI5tJsnjAUmeSDwurZQYxW";
-    private String accessSecret = "MNLSCAh8Ud9wDLTtY9hFCt8metRZpk";
-    /* LTAI5tJsnjAUmeSDwurZQYxW
-MNLSCAh8Ud9wDLTtY9hFCt8metRZpk */
+    private String accessKey = ""阿里云的密钥"";
+    private String accessSecret = ""阿里云的密钥"";
+    /* "阿里云的密钥"
+"阿里云的密钥" */
     private String consumerGroupId = "DEFAULT_GROUP";
 
     //iotInstanceId：实例ID。若是2021年07月30日之前（不含当日）开通的公共实例，请填空字符串。
