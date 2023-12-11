@@ -4,3 +4,7 @@
 doc/
 
 51SCM_Mqtt_GraduationProject.zip
+MQTTClient/.vs/*
+*.db
+*.ipch
+*.ipch
